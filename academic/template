@@ -1,0 +1,66 @@
+正文之前
+<div>
+<div style="display: flex;
+        float: left;
+        align-items: center;">
+    <a href="../index.html" style="font-size:1.5em;color:#000000;text-decoration:none;">🏠 主页</a>
+</div>
+
+
+<div style="display: flex;
+        flex-direction: row-reverse;
+        float: right;
+        align-items: center;">
+    <a href="../academic.html" style="font-size:1.5em;color:#000000;text-decoration:none;">返回 ↩️</a>
+</div>
+<br><br>
+</div>
+<div style='background-color: #000;height: 3px;'></div>
+
+换掉最后两个</div>
+<p>
+</p>
+<div style='background-color: #000;height: 3px;'></div>
+<div>
+
+<div style="display: flex;
+        float: left;
+        align-items: center;">
+    <a href="../index.html" style="font-size:1.5em;color:#000000;text-decoration:none;"><strong>Prev👈</strong></a>
+</div>
+
+
+<div style="display: flex;
+        flex-direction: row-reverse;
+        float: right;
+        align-items: center;">
+    <a href="../index.html" style="font-size:1.5em;color:#000000;text-decoration:none;"><strong>👉Next</strong></a>
+</div>
+<br>
+</div>
+<script src="../typewriter.js"></script>
+<div style='background-color: #000;height: 0px; float:center;font-family:"Consolas";'><br>
+    <strong style='color:#bd4527'>thomas</strong><strong style='color:#000000'>@</strong><strong style='color:#66c428'>icefree</strong><a style='color:#58ACFA'>:~/$ </a>
+    <a id="btapp" style='color:#000;'></a>
+    <script>
+        const btapp = document.getElementById('btapp');
+        const bttypewriter = new Typewriter(btapp, {
+            loop: true
+        });
+        bttypewriter.typeString('mkdir /Computer Science')
+            .pauseFor(800)
+            .deleteChars(7)
+            .typeString('Vision')
+            .pauseFor(800)
+            .deleteAll()
+            .typeString('rm -rf /Computer Vision')
+            .pauseFor(800)
+            .deleteAll()
+            .start();
+    </script>
+</div>
+</div>
+</div>
+<p>
+    
+</p>

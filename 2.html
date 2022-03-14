@@ -1,5 +1,21 @@
-
-<link rel="stylesheet" href="assets/css/main.css" />
-<ul class="icons">
-    <li class="icon fa-arrow-alt-circle-right"></li>
-</ul>
+<script src="../typewriter.js"></script>
+<div style='background-color: #000;height: 0px; float:center;font-family:"Consolas";'><br>
+    <strong style='color:#bd4527'>thomas</strong><strong style='color:#000000'>@</strong><strong style='color:#66c428'>icefree</strong><a style='color:#58ACFA'>:~/$ </a>
+    <a id="btapp" style='color:#000;'></a>
+    <script>
+        const btapp = document.getElementById('btapp');
+        const bttypewriter = new Typewriter(btapp, {
+            loop: true
+        });
+        bttypewriter.typeString('mkdir /Computer Science')
+            .pauseFor(800)
+            .deleteChars(7)
+            .typeString('Vision')
+            .pauseFor(800)
+            .deleteAll()
+            .typeString('rm -rf /Computer Vision')
+            .pauseFor(800)
+            .deleteAll()
+            .start();
+    </script>
+</div>
