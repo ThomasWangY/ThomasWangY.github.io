@@ -1,279 +1,471 @@
 <!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="author" content=" ">
+  <meta name="description" content=" ">
+  <meta name="keywords" content=" ">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Welcome to My Homepage</title>
+ 
+ 
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
 
-<head>
-	<title>Ice Free</title>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-	<link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+    .centered {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* height: 100vh; 让内容垂直居中 */
+      /* background-color: #f0f0f0; 添加一个背景色以便更好地看到居中效果 */
+    }
+  </style>
+
+  <style>
+    .shadowed-text {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* 水平偏移量，垂直偏移量，模糊半径和阴影颜色 */
+    }
+  </style>
+
+  <style>
+    .popup {
+      display: none; /* 初始状态下隐藏弹窗 */
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 750px;
+      height: 200px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    </style>
+
+<style>
+  .arrow {
+    cursor: pointer;
+  }
+  .content {
+    display: none;
+  }
+</style>
+
 </head>
 
-<body class="is-preload">
+<body>
+<div class="centered">
+  <script src="../typewriter.js"></script>
+  <div style='background-color: #000;height: 0px; float:center;font-family:"Consolas";'><br>
+      <strong style='color:#bd4527;font-family:"Segoe UI";'>thomas</strong><strong style='color:#000000;font-family:"Segoe UI";'>@</strong><strong style='color:#66c428;font-family:"Segoe UI";'>wang</strong><a style='color:#58ACFA;font-family:"Segoe UI";'>:~/$ </a>
+      <a id="btapp" style='color:#000;font-family:"Segoe UI";'></a>
+      <script>
+          const btapp = document.getElementById('btapp');
+          const bttypewriter = new Typewriter(btapp, {
+              loop: true
+          });
+          bttypewriter.typeString("The only true wisdom is in knowing you know anything.")
+              .pauseFor(800)
+              .deleteChars(9)
+              .typeString('nothing.')
+              .pauseFor(800)
+              .deleteAll()
+              .typeString('The beautiful thing about learning is that no one can take it away from you.')
+              .pauseFor(800)
+              .deleteAll()
+              .start();
+      </script>
+  </div>
+</div>
+<br>
+<br>
+  <table style="width:100%;max-width:1000px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+    <tr style="padding:0px">
+      <td style="padding:0px">
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr style="padding:0px">
+            <td style="padding:2.5%;width:63%;vertical-align:middle">
+              <p style="text-align:center">
+                <name>Yubin Wang&nbsp; &nbsp;(王雨滨)</name>
+              </p>
+              <p style="text-align:center">
+                <a class="shadowed-text" style='color:#525506' href="mailto:yubinwang628@gmail.com'">Email</a>
+                &nbsp;&nbsp;&nbsp;&nbsp; <a class="shadowed-text" style='color:#3aba69' href="https://scholar.google.com/citations?user=mLeYNLoAAAAJ">Google Scholar</a> &nbsp; &nbsp;&nbsp;&nbsp;<a class="shadowed-text" style='color:#a95945' href="https://github.com/ThomasWangY">Github</a>
+              </p>
 
-	<!-- Wrapper -->
-	<div id="wrapper">
+              <div class="w3-content" style="text-align: justify">
+              I am currently working at Baidu Inc. as a research intern, 
+              closely with <a href='https://scholar.google.com/citations?user=T-YePFgAAAAJ'>Zhikang Zou</a> 
+              and <a href='https://scholar.google.com/citations?user=bmN_nycAAAAJ'>Xiaoqing Ye</a>. 
+              I received my bachelor degree in Data Science and Big Data from Tongji University in 2022, 
+              and am pursuing my master degree in Tongji University, advised by <a href='https://scholar.google.com/citations?user=z-XzWZcAAAAJ'>Prof. Cairong Zhao</a>. 
+              I also have a deep academic collaboration with <a href='https://scholar.google.com/citations?user=JiTfWVMAAAAJ'>Xinyang Jiang</a> from Microsoft Research Asia. 
+              My research interests are in computer vision and multi-modal learning, with specific interest in prompt learning, 
+              text-based person re-id, video temporal grounding, 3D detection, etc.
+              </p>
+              </div>
+            </td>
+            <td style="padding:10% 3% 3% 3%;width:40%;max-width:40%">
+              <a><img style="width:95%;max-width:120%" alt="profile photo" src="profile.jpg" class="hoverZoomLink"></a>
+            </td>
+          </tr>
+      </tbody></table>
 
-		<!-- Main -->
-		<div id="main">
-			<div class="inner">
 
-				<!-- Header -->
-				<header id="header">
-					<a href="index.html" class="logo"><strong>icefree</strong>.cn</a>
-					<ul class="icons">
-						<li><a href="https://steamcommunity.com/profiles/76561198975412988/" class="icon brands fa-steam"><span class="label">Steam</span></a></li>
-						<li><a href="https://github.com/ThomasWangY" class="icon brands fa-github"><span class="label">Github</span></a></li>
-						<li><a href="https://www.instagram.com/yubinwang628/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-						</ul>
-				</header>
+      <!-- ------------------------ News------------------------------- -->
+      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr>
+          <td style="padding:20px;width:100%;vertical-align:middle">
+            <heading>News</heading>
+            <hr />
+            <p>
+              2024.02: One paper about prompt learning accepted by TIP<br>
+              2024.01: Joined Baidu Inc. at Shanghai as a research intern. Focus on 3D Vision<br>
+              2023.12: One paper about prompt learning accepted by AAAI 2024<br>
+              2022.09: Became a graduate student at Tongji University<br>
+              2022.07: One paper about text-based person re-id accepted by PRCV 2022, Oral<br>
+              2021.07: Joined VILL Lab, advised by Prof. Cairong Zhao<br>
+              2021.05: My first paper about opinion summarization accepted by IJCRS 2021<br>
+            </p>
+          </td>
+        </tr>
+      </tbody></table>
 
-				<!-- Banner -->
-				<section id="banner">
-					<div class="content">
-						<header>
-							<h1>Thomas Wang's blog</h1>
-							<h2>欢迎访问我的个人博客，请多多关照~</h2>
-						</header>
-						<p style="font-size:1.1em;font-family:'Cambria','YouYuan'">来icefree.cn，一起分享我的经历。在这里，你可以足不出户就踏遍城市的每个角落，也能与我一同品尝美味晚餐，还能愉快看球、打游戏、听音乐，顺便聆听我的故事。当然，讨论学术问题也是OK的:)</p>
-						<p style="font-size:1.1em;font-family:'calibri','YouYuan'">只要留心发现，生活中处处充满着趣味。</p>
-						<ul class="actions">
-							<li><a href="about.html" class="button big">ABOUT</a></li>
-						</ul>
-					</div>
-					<span class="image object">
-						<img src="images/pic10.jpg" alt="" />
-					</span>
-				</section>
+      <!-- ------------------------ publications------------------------------- -->
 
-				<!-- Section
-				<section>
-					<header class="major">
-						<h2>Feature</h2>
-					</header>
-					<div class="features">
-						<article>
-							<span class="icon fa-gem"></span>
-							<div class="content">
-							</div>
-						</article>
-						<article>
-							<span class="icon solid fa-paper-plane"></span>
-							<div class="content">
-							</div>
-						</article>
-						<article>
-							<span class="icon solid fa-rocket"></span>
-							<div class="content">
-							</div>
-						</article>
-						<article>
-							<span class="icon solid fa-signal"></span>
-							<div class="content">
-							</div>
-						</article>
-					</div>
-				</section> -->
+      <table width="100%" align="center" border="0" cellspacing="0" style="padding-top:20px;padding-left:20px;padding-bottom:5px"><tbody>
+        <tr> <td>
+                <heading>Publications</heading>  (<strong>*</strong>equal contribution; only papers as first or co-first authors are included)
+                <hr />
+          </td> </tr>
+      </tbody> </table>
 
-								<!-- Section -->
-								<section>
-									<header class="major">
-										<h2>Academic</h2>
-									</header>
-									<div class="posts">
-										<article>
-											<a href="academic/TBP-1.html" class="image" style="width:auto;height:auto;"><img src="academic/img/1-cover.png" alt="" /></a>
-											<h3>Person Search with Natural Language Description</h3>
-											<ul class="actions">
-												<li><a href="academic/TBP-1.html" class="button">Read</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="academic/TBP-2.html" class="image" style="width:auto;height:auto;"><img src="academic/img/2-cover.png" alt="" /></a>
-											<h3>Dual-Path Convolutional Image-Text Embedding</h3>
-											<ul class="actions">
-												<li><a href="academic/TBP-2.html" class="button">Read</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="academic/TBP-3.html" class="image" style="width:auto;height:auto;"><img src="academic/img/3-cover.png" alt="" /></a>
-											<h3>Deep Cross-Modal Projection Learning for Image-Text Matching</h3>
-											<ul class="actions">
-												<li><a href="academic/TBP-3.html" class="button">Read</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="academic/TBP-4.html" class="image" style="width:auto;height:auto;"><img src="academic/img/4-cover.png" alt="" /></a>
-											<h3>AXM-Net Cross-Modal Alignment and Contextual Attention for Person Re-ID</h3>
-											<ul class="actions">
-												<li><a href="academic/TBP-4.html" class="button">Read</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="academic/TBP-5.html" class="image" style="width:auto;height:auto;"><img src="academic/img/5-cover.png" alt="" /></a>
-											<h3>Semantically Self-Aligned Network for Text-to-Image Part-aware Person Re-identification</h3>
-											<ul class="actions">
-												<li><a href="academic/TBP-5.html" class="button">Read</a></li>
-											</ul>
-										</article>
-										<article>
-											<a href="academic/TBP-6.html" class="image" style="width:auto;height:auto;"><img src="academic/img/6-cover.png" alt="" /></a>
-											<h3>Contextual Non-Local Alignment over Full-Scale Representation for Text-Based Person Search</h3>
-											<ul class="actions">
-												<li><a href="academic/TBP-6.html" class="button">Read</a></li>
-											</ul>
-										</article>
-									</div>
-								</section>
 
-				<!-- Section -->
-				<section>
-					<header class="major">
-						<h2>Gallery</h2>
-					</header>
-					<div class="posts">
-						<article>
-							<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-							<h3>上海中心</h3>
-							<p>经由世界最快速电梯，来到546米的上海之巅观光厅，俯瞰360度上海城市风貌，细数众多知名建筑，领略风云变幻自然美景，放眼世界，享受深处巅峰的独特体验。</p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
-						</article>
-						<article>
-							<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-							<h3>野生动物园</h3>
-							<p>不仅可以在车入区与一窗之隔的猛兽们亲密互动，也可以利用饲料去喂食那些可爱而又温顺的宠物们。通过与这些动物们面对面打交道，人与自然之间的隔阂在这里被无限拉近了。</p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
-						</article>
-						<article>
-							<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
-							<h3>上下杭</h3>
-							<p>“四横一纵”的观光步行路线；霓虹浪漫的三捷河两岸，以娱乐、休闲为主题打造的“酒吧一条街”。繁华中透露着浪漫的夜生活引得远近游客纷至沓来，寻味看秀，流连忘返。</p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
-						</article>
-						<article>
-							<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
-							<h3>烟台山文化街区</h3>
-							<p>作为「万国建筑博物馆」，烟台山上的古厝有着别样的场面感和吸引力，这些各式各样的古建筑无不见证着这片土地的深厚底蕴和美学积淀，这正是烟台山最动人的底色。</p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
-						</article>
-						<article>
-							<a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
-							<h3>森林公园</h3>
-							<p>春天正是赏樱的好时节，成片的樱花林，不断飘落的樱花瓣，不禁让人心生向往。一眼望去，湖畔樱花粉红一片，像是粉红的一条彩带，水中倒影和周边青山绿水交相辉映。</p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
-						</article>
-						<article>
-							<a href="#" class="image"><img src="images/pic06.jpg" alt="" /></a>
-							<h3>佘山</h3>
-							<p>佘山脚下，月湖之畔，此地多少文人墨客以此为景，纵情于景，写尽了佘山的魅力与神韵。这里承载了上海发展的变化万千的同时，也承载着东方文化的深远与厚重。</p>
-							<ul class="actions">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
-						</article>
-					</div>
-				</section>
+      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
-			</div>
-		</div>
+      <tr></tr>
+      <td style="padding:10px;width:25%;height:80%;vertical-align:middle">
+        <div class="one" >
+            <img src='./Publications/img/metaprompt.png' style="height:100%;width:160%; position: absolute;top: -0%">
+        </div>
+      </td>
 
-		<!-- Sidebar -->
-		<div id="sidebar">
-			<div class="inner">
+      <td style="padding:40px;width:75%;vertical-align:middle">
+          <papertitle>Learning Domain Invariant Prompt for Vision-Language Models</papertitle>
+          <br>
+          Cairong Zhao<strong>*</strong>, <strong>Yubin Wang*</strong>, Xinyang Jiang, Yifei Shen, Kaitao Song, Dongsheng Li, Duoqian Miao
+          <br>
+          <em>IEEE Transactions on Image Processing</em>, TIP (CCF-A, SCI)
+          <br>
+          <a href="./Publications/pdf/metaprompt.pdf">[PDF]</a>
+          <a href="https://github.com/Vill-Lab/2024-TIP-MetaPrompt">[Code]</a>
+          <a href="#" onclick="showPopup()">[BibTeX]</a>
+          <br>
+          <div class="arrow" onclick="toggleContent(this)">▶ Abstract</div>
+          <div class="content">
+            <h6 style="font-family:calibri;font-weight:lighter;color:#3c3b34">Prompt learning stands out as one of the most efficient approaches for adapting powerful vision-language foundational models like CLIP to downstream datasets by tuning learnable prompt vectors with very few samples. However, despite its
+              success in achieving remarkable performance on in-domain data,
+              prompt learning still faces the significant challenge of effectively
+              generalizing to novel classes and domains. Some existing methods
+              address this concern by dynamically generating distinct prompts
+              for different domains. Yet, they overlook the inherent potential of
+              prompts to generalize across unseen domains. To address these
+              limitations, our study introduces an innovative prompt learning
+              paradigm, called MetaPrompt, aiming to directly learn domain
+              invariant prompt in few-shot scenarios. To facilitate learning
+              prompts for image and text inputs independently, we present
+              a dual-modality prompt tuning network comprising two pairs
+              of coupled encoders. Our study centers on an alternate episodic
+              training algorithm to enrich the generalization capacity of the
+              learned prompts. In contrast to traditional episodic training
+              algorithms, our approach incorporates both in-domain updates
+              and domain-split updates in a batch-wise manner. For in-domain
+              updates, we introduce a novel asymmetric contrastive learning
+              paradigm, where representations from the pre-trained encoder
+              assume supervision to regularize prompts from the prompted
+              encoder. To enhance performance on out-of-domain distribution,
+              we propose a domain-split optimization on visual prompts for
+              cross-domain tasks or textual prompts for cross-class tasks
+              during domain-split updates. Extensive experiments across 11
+              datasets for base-to-new generalization and 4 datasets for domain
+              generalization exhibit favorable performance. Compared with
+              the state-of-the-art method, MetaPrompt achieves an absolute
+              gain of 1.02% on the overall harmonic mean in base-to-new
+              generalization and consistently demonstrates superiority over all
+              benchmarks in domain generalization.</p>
+            </h6>
 
-				<!-- Search -->
-				<section id="search" class="alt">
-					<form method="post" action="#">
-						<input type="text" name="query" id="query" placeholder="Search" />
-					</form>
-				</section>
+          <script>
+          function toggleContent(element) {
+            var content = element.nextElementSibling;
+            if (content.style.display === "none") {
+              content.style.display = "block";
+              element.textContent = "▼ Abstract";
+            } else {
+              content.style.display = "none";
+              element.textContent = "▶ Abstract";
+            }
+          }
+          </script>
+          <div class="w3-content" style="text-align: justify">
+          <p>
+          </p>
+          </div>
+      </td>
+      <div id="popup" class="popup">
+        <!-- 这里是弹窗中的自定义内容 -->
+        <h6 style="font-weight:lighter;">@article{zhao2022learning, <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;title={Learning domain invariant prompt for vision-language models}, <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;author={Zhao, Cairong and Wang, Yubin and Jiang, Xinyang and Shen, Yifei and Song, Kaitao and Li, Dongsheng and Miao, Duoqian}, <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;journal={arXiv preprint arXiv:2212.04196}, <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;year={2022} <br>
+        }</h6>
+      
+        <button onclick="hidePopup()">close</button>
+      </div>
+      
+      <script>
+      function showPopup() {
+        document.getElementById("popup").style.display = "block"; // 显示弹窗
+      }
+      
+      function hidePopup() {
+        document.getElementById("popup").style.display = "none"; // 隐藏弹窗
+      }
+      </script>
 
-				<!-- Menu -->
-				<nav id="menu">
-					<header class="major">
-						<h2>菜单/Menu</h2>
-					</header>
-					<ul>
-						<li><a href="index.html">主页/Homepage</a></li>
-						<li><a href="gallery.html">画册/Gallery</a></li>
-						<li>
-							<span class="opener">娱乐/Entertainment</span>
-							<ul>
-								<li><a href="games.html">游戏/Games</a></li>
-								<li><a href="sports.html">体育/Sports</a></li>
-								<li><a href="music.html">音乐/Music</a></li>
-							</ul>
-						</li>
-						<li><a href="food.html">美食/Food</a></li>
-						<li><a href="story.html">故事/Story</a></li>
-						<li><a href="academic.html">学术/Academic</a></li>
-						<li><a href="inspiration.html">灵感/Inspiration</a></li>
-						<li><a href="about.html">关于/About</a></li>
-					</ul>
-				</nav>
 
-				<!-- Section -->
-				<section>
-					<header class="major">
-						<h2>最近更新</h2>
-					</header>
-					<div class="mini-posts">
-						<article>
-							<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-							<strong>踏上上海之巅</strong>
-						</article>
-						<article>
-							<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-							<strong>与动物们嬉闹</strong>
-						</article>
-						<article>
-							<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
-							<strong>寻找闽都水乡的温情</strong>
-							<p> </p>
-						</article>
-					</div>
-					<ul class="actions">
-						<li><a href="#" class="button">More</a></li>
-					</ul>
-				</section>
+      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
-				<!-- Section -->
-				<section>
-					<header class="major">
-						<h2>联系方式</h2>
-					</header>
-					<ul class="contact">
-						<li class="icon solid fa-envelope"><a href="#">358762127@qq.com</a></li>
-						<li class="icon solid fa-phone">18161865612</li>
-						<li class="icon solid fa-home">曹安公路4800号同济大学<br/>
-							上海市, 201804</li>
-					</ul>
-				</section>
+      <tr></tr>
+      <td style="padding:10px;width:25%;height:80%;vertical-align:middle">
+        <div class="one" >
+            <img src='./Publications/img/hpt.png' style="height:100%;width:160%; position: absolute;top: -0%">
+        </div>
+      </td>
 
-			</div>
-		</div>
+      <td style="padding:40px;width:75%;vertical-align:middle">
+          <papertitle>Learning Hierarchical Prompt with Structured Linguistic Knowledge for Vision-Language Models</papertitle>
+          <br>
+          <strong>Yubin Wang</strong>, Xinyang Jiang, De Cheng, Dongsheng Li, Cairong Zhao
+          <br>
+          <em>The 38th Annual AAAI Conference on Artificial Intelligence</em>, AAAI 2024 (CCF-A)
+          <br>
+          <a href="./Publications/pdf/hpt.pdf">[PDF]</a>
+          <a href="https://github.com/Vill-Lab/2024-AAAI-HPT">[Code]</a>
+          <a href="#" onclick="showPopup1()">[BibTeX]</a>
+          <br>
+          <div class="arrow" onclick="toggleContent(this)">▶ Abstract</div>
+          <div class="content">
+            <h6 style="font-family:calibri;font-weight:lighter;color:#3c3b34">Prompt learning has become a prevalent strategy for adapting
+              vision-language foundation models to downstream tasks. As
+              large language models (LLMs) have emerged, recent studies
+              have explored the use of category-related descriptions as input to enhance prompt effectiveness. Nevertheless, conventional descriptions fall short of structured information that
+              effectively represents the interconnections among entities or
+              attributes linked to a particular category. To address this limitation and prioritize harnessing structured knowledge, this
+              paper advocates for leveraging LLMs to build a graph for
+              each description to model the entities and attributes describing the category, as well as their correlations. Preexisting
+              prompt tuning methods exhibit inadequacies in managing
+              this structured knowledge. Consequently, we propose a novel
+              approach called Hierarchical Prompt Tuning (HPT), which
+              enables simultaneous modeling of both structured and conventional linguistic knowledge. Specifically, we introduce a
+              relationship-guided attention module to capture pair-wise associations among entities and attributes for low-level prompt
+              learning. In addition, by incorporating high-level and globallevel prompts modeling overall semantics, the proposed hierarchical structure forges cross-level interlinks and empowers the model to handle more complex and long-term relationships. Extensive experiments demonstrate that our HPT
+              shows strong effectiveness and generalizes much better than
+              existing SOTA methods.</p>
+            </h6>
 
-	</div>
+          <script>
+          function toggleContent(element) {
+            var content = element.nextElementSibling;
+            if (content.style.display === "none") {
+              content.style.display = "block";
+              element.textContent = "▼ Abstract";
+            } else {
+              content.style.display = "none";
+              element.textContent = "▶ Abstract";
+            }
+          }
+          </script>
+          <div class="w3-content" style="text-align: justify">
+          <p>
+          </p>
+          </div>
+      </td>
+      <div id="popup1" class="popup">
+        <!-- 这里是弹窗中的自定义内容 -->
+        <h6 style="font-weight:lighter;">@article{wang2023learning, <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;title={Learning Hierarchical Prompt with Structured Linguistic Knowledge for Vision-Language Models}, <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;author={Wang, Yubin and Jiang, Xinyang and Cheng, De and Li, Dongsheng and Zhao, Cairong}, <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;journal={arXiv preprint arXiv:2312.06323}, <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;year={2023} <br>
+        }</h6>
 
-	<!-- Scripts -->
-	<script src="assets/js/jquery.min.js"></script>
-	<script src="assets/js/browser.min.js"></script>
-	<script src="assets/js/breakpoints.min.js"></script>
-	<script src="assets/js/util.js"></script>
-	<script src="assets/js/main.js"></script>
+        <button onclick="hidePopup1()">close</button>
+      </div>
+
+      <script>
+      function showPopup1() {
+        document.getElementById("popup1").style.display = "block"; // 显示弹窗
+      }
+
+      function hidePopup1() {
+        document.getElementById("popup1").style.display = "none"; // 隐藏弹窗
+      }
+      </script>
+
+<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+
+  <tr></tr>
+  <td style="padding:10px;width:25%;height:80%;vertical-align:middle">
+    <div class="one" >
+        <img src='./Publications/img/pman.png' style="height:100%;width:160%; position: absolute;top: -0%">
+    </div>
+  </td>
+
+  <td style="padding:40px;width:75%;vertical-align:middle">
+      <papertitle>Part-Based Multi-Scale Attention Network for Text-Based Person Search</papertitle>
+      <br>
+      <strong>Yubin Wang</strong>, Ding Qi, Cairong Zhao
+      <br>
+      <em>Chinese Conference on Pattern Recognition and Computer Vision</em>, PRCV 2022 (CCF-C, Oral)
+      <br>
+      <a href="./Publications/pdf/pman.pdf">[PDF]</a>
+      <a href="#" onclick="showPopup2()">[BibTeX]</a>
+      <br>
+      <div class="arrow" onclick="toggleContent(this)">▶ Abstract</div>
+      <div class="content">
+        <h6 style="font-family:calibri;font-weight:lighter;color:#3c3b34">Text-based person search aims to retrieve the target person in an image gallery based on textual descriptions. Solving such a
+          fine-grained cross-modal retrieval problem is very challenging due to differences between modalities. Moreover, the inter-class variance of both
+          person images and descriptions is small, and more semantic information
+          is needed to assist in aligning visual and textual representations at different scales. In this paper, we propose a Part-based Multi-Scale Attention
+          Network (PMAN) capable of extracting visual semantic features from
+          different scales and matching them with textual features. We initially
+          extract visual and textual features using ResNet and BERT, respectively.
+          Multi-scale visual semantics is then acquired based on local feature maps
+          of different scales. Our proposed method learns representations for both
+          modalities simultaneously based mainly on Bottleneck Transformer with
+          self-attention mechanism. A multi-scale cross-modal matching strategy
+          is introduced to narrow the gap between modalities from multiple scales.
+          Extensive experimental results show that our method outperforms the
+          state-of-the-art methods on CUHK-PEDES datasets.</p>
+        </h6>
+
+      <script>
+      function toggleContent(element) {
+        var content = element.nextElementSibling;
+        if (content.style.display === "none") {
+          content.style.display = "block";
+          element.textContent = "▼ Abstract";
+        } else {
+          content.style.display = "none";
+          element.textContent = "▶ Abstract";
+        }
+      }
+      </script>
+      <div class="w3-content" style="text-align: justify">
+      <p>
+      </p>
+      </div>
+  </td>
+  <div id="popup2" class="popup">
+    <!-- 这里是弹窗中的自定义内容 -->
+    <h6 style="font-weight:lighter;">@inproceedings{wang2022part, <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;title={Part-Based Multi-Scale Attention Network for Text-Based Person Search}, <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;author={Wang, Yubin and Qi, Ding and Zhao, Cairong}, <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;booktitle={Chinese Conference on Pattern Recognition and Computer Vision (PRCV)}, <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;pages={462--474}, <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;year={2022}, <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;organization={Springer} <br>
+    }</h6>
+
+    <button onclick="hidePopup2()">close</button>
+  </div>
+
+  <script>
+  function showPopup2() {
+    document.getElementById("popup2").style.display = "block"; // 显示弹窗
+  }
+
+  function hidePopup2() {
+    document.getElementById("popup2").style.display = "none"; // 隐藏弹窗
+  }
+  </script>
+
+<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+
+  <tr></tr>
+  <td style="padding:10px;width:25%;height:80%;vertical-align:middle">
+    <div class="one" >
+        <img src='./Publications/img/opsum.png' style="height:100%;width:160%; position: absolute;top: -0%">
+    </div>
+  </td>
+
+  <td style="padding:40px;width:75%;vertical-align:middle">
+      <papertitle>An Opinion Summarization-Evaluation System Based on Pre-trained Models</papertitle>
+      <br>
+      Han Jiang<strong>*</strong>, <strong>Yubin Wang*</strong>, Songhao Lv, Zhihua Wei
+      <br>
+      <em>Rough Sets: International Joint Conference</em>, IJCRS 2021
+      <br>
+      <a href="./Publications/pdf/opsum.pdf">[PDF]</a>
+      <a href="#" onclick="showPopup3()">[BibTeX]</a>
+      <br>
+      <div class="arrow" onclick="toggleContent(this)">▶ Abstract</div>
+      <div class="content">
+        <h6 style="font-family:calibri;font-weight:lighter;color:#3c3b34">As social media appeal more frequently used, the task of extracting
+          the mainstream opinions of the discussions arising from the media, i. e. opinion
+          summarization, has drawn considerable attention. This paper proposes an opinion
+          summarization-evaluation system containing a pipeline and an evaluation module
+          for the task. In our algorithm, the state-of-the-art pre-trained model BERT is
+          fine-tuned for the subjectivity analysis, and the advanced pre-trained models are
+          combined with traditional data mining algorithms to gain the mainstreams. For
+          evaluation, a set of hierarchical metrics is also stated. Experiment result shows
+          that our algorithm produces concise and major opinions. An ablation study is also
+          conducted to prove that each part of the pipeline takes effect significantly.</p>
+        </h6>
+
+      <script>
+      function toggleContent(element) {
+        var content = element.nextElementSibling;
+        if (content.style.display === "none") {
+          content.style.display = "block";
+          element.textContent = "▼ Abstract";
+        } else {
+          content.style.display = "none";
+          element.textContent = "▶ Abstract";
+        }
+      }
+      </script>
+      <div class="w3-content" style="text-align: justify">
+      <p>
+      </p>
+      </div>
+  </td>
+  <div id="popup3" class="popup">
+    <!-- 这里是弹窗中的自定义内容 -->
+    <h6 style="font-weight:lighter;">@inproceedings{jiang2021opinion, <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;title={An Opinion Summarization-Evaluation System Based on Pre-trained Models}, <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;author={Jiang, Han and Wang, Yubin and Lv, Songhao and Wei, Zhihua}, <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;booktitle={Rough Sets: International Joint Conference, IJCRS 2021, Bratislava, Slovakia, September 19--24, 2021, Proceedings}, <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;pages={225--230}, <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;year={2021}, <br>
+      &nbsp;&nbsp;&nbsp;&nbsp;organization={Springer} <br>
+    }</h6>
+
+    <button onclick="hidePopup3()">close</button>
+  </div>
+
+  <script>
+  function showPopup3() {
+    document.getElementById("popup3").style.display = "block"; // 显示弹窗
+  }
+
+  function hidePopup3() {
+    document.getElementById("popup3").style.display = "none"; // 隐藏弹窗
+  }
+  </script>
+      
 
 </body>
 
