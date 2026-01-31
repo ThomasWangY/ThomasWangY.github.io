@@ -9,6 +9,7 @@
  
  
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     .centered {
@@ -45,36 +46,127 @@
 <style>
   .arrow {
     cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
   }
   .content {
     display: none;
   }
 </style>
 
+<script>
+  function toggleContent(element) {
+    var content = element.nextElementSibling;
+    if (content.style.display === "none" || content.style.display === "") {
+      content.style.display = "block";
+      element.textContent = "▼ Abstract";
+    } else {
+      content.style.display = "none";
+      element.textContent = "▶ Abstract";
+    }
+  }
+
+  // 背景视差滚动效果
+  window.addEventListener('scroll', function() {
+    const scrolled = window.pageYOffset;
+    const background = document.querySelector('body::before') || document.body;
+    const parallaxSpeed = 0.5;
+    
+    document.body.style.backgroundPositionY = -(scrolled * parallaxSpeed) + 'px';
+  });
+</script>
+
 </head>
 
 <body>
-<div class="centered">
+<!-- 顶部个人信息部分 -->
+<div class="glass-container">
+<div style="display: flex; justify-content: flex-start; align-items: center; padding-left: 20px;">
   <script src="../typewriter.js"></script>
-  <div style='background-color: #000;height: 0px; float:center;font-family:"Consolas";'><br>
-      <strong style='color:#bd4527;font-family:"Segoe UI";'>thomas</strong><strong style='color:#000000;font-family:"Segoe UI";'>@</strong><strong style='color:#66c428;font-family:"Segoe UI";'>wang</strong><a style='color:#58ACFA;font-family:"Segoe UI";'>:~/$ </a>
-      <a id="btapp" style='color:#000;font-family:"Segoe UI";'></a>
+  <div style='background-color: rgba(0, 0, 0, 0.5);height: 0px; font-family:"Consolas";'><br>
+      <strong style='color:#bd4527;font-family:"Courier New", "Courier", "Monaco", "Consolas", monospace;'>thomas</strong><strong style='color:#ffffff;font-family:"Courier New", "Courier", "Monaco", "Consolas", monospace;'>@</strong><strong style='color:#66c428;font-family:"Courier New", "Courier", "Monaco", "Consolas", monospace;'>wang</strong><a style='color:#58ACFA;font-family:"Courier New", "Courier", "Monaco", "Consolas", monospace;'>:~/$ </a>
+      <a id="btapp" style='color:#ffffff;font-family:"Courier New", "Courier", "Monaco", "Consolas", monospace;font-size:16px;letter-spacing:1px;text-shadow: 0 0 10px rgba(0, 242, 254, 0.8);display: inline-block;min-width: 0;'></a>
+      <span id="cursor" style='color:#00f2fe;font-weight:bold;font-family:"Courier New", "Courier", "Monaco", "Consolas", monospace;animation: blink 1s infinite;text-shadow: 0 0 10px rgba(0, 242, 254, 1), 0 0 20px rgba(0, 242, 254, 0.6);'>|</span>
       <script>
           const btapp = document.getElementById('btapp');
-          const bttypewriter = new Typewriter(btapp, {
-              loop: true
-          });
-          bttypewriter.typeString("The only true wisdom is in knowing you know anything.")
-              .pauseFor(800)
-              .deleteChars(9)
-              .typeString('nothing.')
-              .pauseFor(800)
-              .deleteAll()
-              .typeString('The beautiful thing about learning is that no one can take it away from you.')
-              .pauseFor(800)
-              .deleteAll()
-              .start();
+          
+          // 英文谚语库
+          const quotes = [
+              "The only true wisdom is in knowing you know nothing.",
+              "Knowledge is power, but enthusiasm pulls the switch.",
+              "The more you know, the more you realize you don't know.",
+              "Learning never exhausts the mind.",
+              "The expert in anything was once a beginner.",
+              "Success is the sum of small efforts repeated day in and day out.",
+              "In learning you will teach, and in teaching you will learn.",
+              "The only way to do great work is to love what you do.",
+              "Innovation distinguishes between a leader and a follower.",
+              "Stay hungry, stay foolish."
+          ];
+          
+          let currentQuoteIndex = -1;
+          let isTyping = false;
+          let isDeleting = false;
+          let currentText = '';
+          let charIndex = 0;
+          
+          function getRandomQuote() {
+              let newIndex;
+              do {
+                  newIndex = Math.floor(Math.random() * quotes.length);
+              } while (newIndex === currentQuoteIndex && quotes.length > 1);
+              currentQuoteIndex = newIndex;
+              return quotes[newIndex];
+          }
+          
+          function typeText() {
+              if (isDeleting) return;
+              
+              const quote = currentText;
+              if (charIndex < quote.length) {
+                  btapp.textContent = quote.substring(0, charIndex + 1);
+                  charIndex++;
+                  setTimeout(typeText, 50 + Math.random() * 30);
+              } else {
+                  isTyping = false;
+                  setTimeout(() => {
+                      isDeleting = true;
+                      deleteText();
+                  }, 2000 + Math.random() * 1000);
+              }
+          }
+          
+          function deleteText() {
+              if (isTyping) return;
+              
+              if (charIndex > 0) {
+                  btapp.textContent = currentText.substring(0, charIndex - 1);
+                  charIndex--;
+                  setTimeout(deleteText, 30 + Math.random() * 20);
+              } else {
+                  isDeleting = false;
+                  setTimeout(() => {
+                      currentText = getRandomQuote();
+                      charIndex = 0;
+                      isTyping = true;
+                      typeText();
+                  }, 500);
+              }
+          }
+          
+          // 启动打字机
+          currentText = getRandomQuote();
+          isTyping = true;
+          typeText();
       </script>
+      <style>
+          @keyframes blink {
+              0%, 50% { opacity: 1; }
+              51%, 100% { opacity: 0; }
+          }
+      </style>
   </div>
 </div>
 <br>
@@ -87,22 +179,21 @@
             <td style="padding:2.5%;width:63%;vertical-align:middle">
               <p style="text-align:center">
                 <name>Yubin Wang&nbsp; &nbsp;(王雨滨)</name><br>
-                <h5 style="text-align:center">Email: yubinwang628@gmail.com&nbsp; &nbsp;|&nbsp; &nbsp;wangyubin2018@tongji.edu.cn</h6>
+                <h5 style="text-align:center">Email: yubinwang628@gmail.com&nbsp; &nbsp;|&nbsp; &nbsp;wangyubin@pjlab.org.cn</h6>
               </p>
               <div class="w3-content" style="text-align: justify">
-              I am a second-year master's student at Tongji University, luckily advised by <a href='https://vill-lab.github.io/'>Prof. Cairong Zhao</a>. 
-              Prior to this, I received my bachelor degree in Data Science and Big Data from Tongji University in 2022. 
-              At present, I am doing research intern in AI/ML Group of Microsoft Research Asia, Shanghai, supervised by 
-              <a href='https://scholar.google.com/citations?user=JiTfWVMAAAAJ'>Dr. Xinyang Jiang</a> and <a href='http://recmind.cn/'>Dr. Dongsheng Li</a>. 
-              Before this, I was working at Baidu Inc. as a research intern, closely with <a href='https://bigteacher-777.github.io/'>Zhikang Zou</a> 
-              and <a href='https://shuluoshu.github.io/'>Dr. Xiaoqing Ye</a>. 
-              I also have a deep academic collaboration with <a href='https://web.xidian.edu.cn/dcheng/index.html'>Prof. De Cheng</a> from Xidian University. 
-              My research interests are in computer vision and multi-modal learning, with specific interest in <b>prompt learning</b>, 
-              explainibility and knowledge discovery in vision, text-based person re-id, video temporal grounding, point-based 3D detection, etc.
+              I am currently working as an algorithm engineer at OpenDataLab, Shanghai AI Lab. My main focus is on research and development for parsing chemistry-related documents. I earned my Master's degree from Tongji University in 2025, where I was advised by <a href='https://vill-lab.github.io/'>Prof. Cairong Zhao</a>. Prior to my current role, I worked as a research intern at Baidu Inc., collaborating closely with <a href='https://bigteacher-777.github.io/'>Zhikang Zou</a> and <a href='https://shuluoshu.github.io/'>Dr. Xiaoqing Ye</a>. I also completed a research internship in the AI/ML Group at Microsoft Research Asia, Shanghai, under the supervision of <a href='https://scholar.google.com/citations?user=JiTfWVMAAAAJ'>Dr. Xinyang Jiang</a> and <a href='http://recmind.cn/'>Dr. Dongsheng Li</a>. Additionally, I maintain a deep academic collaboration with <a href='https://web.xidian.edu.cn/dcheng/index.html'>Prof. De Cheng</a> from Xidian University. My research interests focus on computer vision and multi-modal learning, with specific work in prompt learning on VLMs, explainability and knowledge discovery in vision, text-based person re-identification, video temporal grounding, point-based 3D detection, and related areas.
               </p>
               </div>
               <p style="text-align:center">
-                <a class="shadowed-text" style='color:#3aba69' href="https://scholar.google.com/citations?user=mLeYNLoAAAAJ">Google Scholar</a>&nbsp; &nbsp;&nbsp; &nbsp;<a class="shadowed-text" style='color:#977937' href="https://github.com/ThomasWangY">Github</a>
+                <a class="icon-link" href="https://scholar.google.com/citations?user=mLeYNLoAAAAJ" title="Google Scholar" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#3aba69" style="margin: 0 15px; filter: drop-shadow(0 0 10px rgba(58, 186, 105, 0.6)); transition: all 0.3s ease; vertical-align: middle; display: inline-block; line-height: 32px;">
+                    <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
+                  </svg>
+                </a>
+                <a class="icon-link" href="https://github.com/ThomasWangY" title="Github" target="_blank">
+                  <i class="fab fa-github" style="font-size: 32px; color: #977937; margin: 0 15px; text-shadow: 0 0 10px rgba(151, 121, 55, 0.6); transition: all 0.3s ease; vertical-align: middle; line-height: 32px;"></i>
+                </a>
               </p>
             </td>
             <td style="padding:5% 3% 3% 3%;width:40%;max-width:40%">
@@ -110,61 +201,308 @@
             </td>
           </tr>
       </tbody></table>
+      </td>
+    </tr>
+  </tbody></table>
+</div>
 
-
+<!-- News部分 -->
+<div class="glass-container news-container">
       <!-- ------------------------ News------------------------------- -->
       <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
           <tr>
-          <td style="padding:20px;width:100%;vertical-align:middle">
+          <td style="padding:15px 20px;width:100%;vertical-align:middle">
             <heading>News</heading>
             <hr />
-            <p>
-              2024.07: Joined MSRA Shanghai as a research intern. Focus on explainibility and knowledge discovery in vision.<br>
-              2024.02: One paper about prompt learning accepted by TIP.<br>
-              2024.01: Joined Baidu Inc. at Shanghai as a research intern. Focus on 3D vision.<br>
-              2023.12: One paper about prompt learning accepted by AAAI 2024.<br>
-              2022.09: Became a graduate student at Tongji University.<br>
-              2022.07: One paper about text-based person re-id accepted by PRCV 2022, Oral.<br>
-              2021.07: Joined VILL Lab, advised by Prof. Cairong Zhao.<br>
-              2021.05: My first paper about opinion summarization accepted by IJCRS 2021.<br>
-            </p>
+            <div class="timeline-wrapper">
+              <div class="scroll-fade-top"></div>
+              <div class="timeline-scroll-container">
+              <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-date">2026.02</div>
+                <div class="timeline-content">One paper about video temporal grounding accepted by TIP.</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-date">2026.01</div>
+                <div class="timeline-content">One paper about interpretability for visual prompt tuning accepted by ICLR 2026.</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-date">2025.05</div>
+                <div class="timeline-content">Joined OpenDataLab as an algorithm engineer. Focus on parsing chemistry-related documents.</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-date">2025.03</div>
+                <div class="timeline-content">Graduated from Tongji University with a Master's degree.</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-date">2025.01</div>
+                <div class="timeline-content">One paper about 3D object detection accepted by ICLR 2025.</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-date">2024.07</div>
+                <div class="timeline-content">Joined MSRA Shanghai as a research intern. Focus on explainibility and knowledge discovery in vision.</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-date">2024.02</div>
+                <div class="timeline-content">One paper about prompt learning accepted by TIP.</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-date">2024.01</div>
+                <div class="timeline-content">Joined Baidu Inc. at Shanghai as a research intern. Focus on 3D vision.</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-date">2023.12</div>
+                <div class="timeline-content">One paper about prompt learning accepted by AAAI 2024.</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-date">2022.09</div>
+                <div class="timeline-content">Became a graduate student at Tongji University.</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-date">2022.07</div>
+                <div class="timeline-content">One paper about text-based person re-id accepted by PRCV 2022, Oral.</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-date">2021.07</div>
+                <div class="timeline-content">Joined VILL Lab, advised by Prof. Cairong Zhao.</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-date">2021.05</div>
+                <div class="timeline-content">My first paper about opinion summarization accepted by IJCRS 2021.</div>
+              </div>
+            </div>
+            </div>
+              <div class="scroll-fade-bottom"></div>
+              <div class="scroll-hint">
+                <i class="fas fa-chevron-down"></i>
+              </div>
+            </div>
           </td>
         </tr>
       </tbody></table>
+      <script>
+        // 动态控制滚动提示和渐变遮罩
+        (function() {
+          const wrapper = document.querySelector('.timeline-wrapper');
+          const scrollContainer = document.querySelector('.timeline-scroll-container');
+          
+          if (!wrapper || !scrollContainer) return;
+          
+          function updateScrollState() {
+            const scrollTop = scrollContainer.scrollTop;
+            const scrollHeight = scrollContainer.scrollHeight;
+            const clientHeight = scrollContainer.clientHeight;
+            
+            // 检查是否在顶部
+            if (scrollTop <= 5) {
+              wrapper.classList.add('scrolled-top');
+            } else {
+              wrapper.classList.remove('scrolled-top');
+            }
+            
+            // 检查是否在底部（使用更宽松的阈值）
+            const isAtBottom = Math.abs(scrollTop + clientHeight - scrollHeight) < 15;
+            if (isAtBottom || scrollHeight <= clientHeight) {
+              wrapper.classList.add('scrolled-bottom');
+            } else {
+              wrapper.classList.remove('scrolled-bottom');
+            }
+          }
+          
+          // 监听滚动事件
+          scrollContainer.addEventListener('scroll', updateScrollState);
+          
+          // 初始检查（延迟以确保DOM完全加载）
+          setTimeout(updateScrollState, 100);
+          
+          // 监听窗口大小变化
+          window.addEventListener('resize', updateScrollState);
+          
+          // 使用 MutationObserver 监听内容变化
+          const observer = new MutationObserver(updateScrollState);
+          observer.observe(scrollContainer, { childList: true, subtree: true });
+          
+          // 监听鼠标进入/离开，显示/隐藏滚动条
+          let scrollTimeout;
+          scrollContainer.addEventListener('scroll', function() {
+            scrollContainer.style.scrollbarColor = 'rgba(0, 242, 254, 0.8) rgba(255, 255, 255, 0.1)';
+            scrollContainer.classList.add('scrolling');
+            
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(function() {
+              scrollContainer.style.scrollbarColor = 'transparent transparent';
+              scrollContainer.classList.remove('scrolling');
+            }, 1000);
+          });
+        })();
+      </script>
+</div>
 
+<!-- Publications部分 -->
+<div class="glass-container">
       <!-- ------------------------ publications------------------------------- -->
 
       <table width="100%" align="center" border="0" cellspacing="0" style="padding-top:20px;padding-left:20px;padding-bottom:5px"><tbody>
         <tr> <td>
-                <heading>Publications</heading>  (<strong>*</strong>equal contribution; only papers as first authors are included; double click to view abstract)
+                <heading>Publications</heading>
                 <hr />
+                <p style="color:#ffffff;font-size:16px;">(<strong>*</strong>equal contribution; only papers as first authors are included)</p>
           </td> </tr>
       </tbody> </table>
 
 
       <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
-      <tr></tr>
-      <td style="padding:10px;width:25%;height:80%;vertical-align:middle">
+      <tr>
+      <td style="padding:10px;width:25%;vertical-align:top">
         <div class="one" >
-            <img src='./Publications/img/metaprompt.png' style="height:100%;width:160%; position: absolute;top: -0%">
+            <img src='./Publications/img/actprompt.png' style="height:100%;width:160%; position: absolute;top: 10%">
+        </div>
+      </td>
+
+      <td style="padding:40px;width:75%;vertical-align:middle">
+          <papertitle>ActPrompt: In-Domain Feature Adaptation via Action Cues for Video Temporal Grounding</papertitle>
+          <br>
+          <strong class="author-highlight">Yubin Wang</strong>, Xinyang Jiang, De Cheng, Dongsheng Li, Cairong Zhao
+          <br>
+          <em>IEEE Transactions on Image Processing</em>, <span class="venue-highlight">TIP</span> (CCF-A, SCI)
+          <br>
+          <a href="./Publications/pdf/actprompt.pdf">[PDF]</a>
+          <br>
+          <div class="arrow" style="cursor: pointer;" onclick="toggleContent(this)">▶ Abstract</div>
+          <div class="content">
+            <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">Video temporal grounding is an emerging topic aiming to
+              identify specific clips within videos. In addition to pre-trained 
+              video models, contemporary methods utilize pre-trained
+              vision-language models (VLM) to capture detailed
+              characteristics of diverse scenes and objects from video
+              frames. However, as pre-trained on images, VLM may struggle
+              to distinguish action-sensitive patterns from static objects,
+              making it necessary to adapt them to specific data
+              domains for effective feature representation over temporal
+              grounding. We address two primary challenges to achieve this
+              goal. Specifically, to mitigate high adaptation costs, we propose
+               an efficient preliminary in-domain fine-tuning paradigm
+              for feature adaptation, where downstream-adaptive features
+              are learned through several pretext tasks. Furthermore, to
+              integrate action-sensitive information into VLM, we introduce
+              Action-Cue-Injected Temporal Prompt Learning (ActPrompt), 
+              which injects action cues into the image encoder of
+              VLM for better discovering action-sensitive patterns. Extensive
+              experiments demonstrate that ActPrompt is an off-the-shelf 
+              training framework that can be effectively applied to
+              various SOTA methods, resulting in notable improvements.
+            </p>
+            </h6>
+
+          <div class="w3-content" style="text-align: justify">
+          <p>
+          </p>
+          </div>
+      </td>
+      </tr>
+      </tbody></table>
+
+      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+
+      <tr>
+      <td style="padding:10px;width:25%;vertical-align:top">
+        <div class="one" >
+            <img src='./Publications/img/ivpt.png' style="height:100%;width:160%; position: absolute;top: 10%">
+        </div>
+      </td>
+
+      <td style="padding:40px;width:75%;vertical-align:middle">
+          <papertitle>Exploring Interpretability for Visual Prompt Tuning with Cross-layer Concepts</papertitle>
+          <br>
+          <strong class="author-highlight">Yubin Wang</strong>, Xinyang Jiang, De Cheng, Xiangqian Zhao, Zilong Wang, Dongsheng Li, Cairong Zhao
+          <br>
+          <em>The 14th International Conference on Learning Representations</em>, <span class="venue-highlight">ICLR 2026</span>
+          <br>
+          <a href="#">[PDF]</a>
+          <br>
+          <div class="arrow" style="cursor: pointer;" onclick="toggleContent(this)">▶ Abstract</div>
+          <div class="content">
+            <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">Visual prompt tuning offers significant advantages for adapting pre-trained visual foundation models to specific tasks. However, current research provides limited insight into the interpretability of this approach, which is essential for enhancing AI reliability and enabling AI-driven knowledge discovery. In this paper, rather than learning abstract prompt embeddings, we propose the first framework, named Interpretable Visual Prompt Tuning (IVPT), to explore interpretability for visual prompts by introducing cross-layer concept prototypes. Specifically, visual prompts are linked to human-understandable semantic concepts, represented as a set of category-agnostic prototypes, each corresponding to a specific region of the image. IVPT then aggregates features from these regions to generate interpretable prompts for multiple network layers, allowing the explanation of visual prompts at different network depths and semantic granularities. Comprehensive qualitative and quantitative evaluations on fine-grained classification benchmarks show its superior interpretability and performance over visual prompt tuning methods and existing interpretable methods.
+            </p>
+            </h6>
+
+          <div class="w3-content" style="text-align: justify">
+          <p>
+          </p>
+          </div>
+      </td>
+      </tr>
+      </tbody></table>
+
+      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+
+      <tr>
+      <td style="padding:10px;width:25%;vertical-align:top">
+        <div class="one" >
+            <img src='./Publications/img/uni2det.png' style="height:100%;width:160%; position: absolute;top: 10%">
+        </div>
+      </td>
+
+      <td style="padding:40px;width:75%;vertical-align:middle">
+          <papertitle>Uni<sup>2</sup>Det: Unified and Universal Framework for Prompt-Guided Multi-dataset 3D Detection</papertitle>
+          <br>
+          <strong class="author-highlight">Yubin Wang*</strong>, Zhikang Zou*, Xiaoqing Ye, Xiao Tan, Errui Ding, Cairong Zhao
+          <br>
+          <em>The 13th International Conference on Learning Representations</em>, <span class="venue-highlight">ICLR 2025</span>
+          <br>
+          <a href="./Publications/pdf/uni2det.pdf">[PDF]</a>
+          <br>
+          <div class="arrow" style="cursor: pointer;" onclick="toggleContent(this)">▶ Abstract</div>
+          <div class="content">
+            <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">We present Uni<sup>2</sup>Det, a brand new framework for unified and universal multi-
+              dataset training on 3D detection, enabling robust performance across diverse
+              domains and generalization to unseen domains. Due to substantial disparities in
+              data distribution and variations in taxonomy across diverse domains, training such
+              a detector by simply merging datasets poses a significant challenge. Motivated by
+              this observation, we introduce multi-stage prompting modules for multi-dataset 3D
+              detection, which leverages prompts based on the characteristics of corresponding
+              datasets to mitigate existing differences. This elegant design facilitates seamless
+              plug-and-play integration within various advanced 3D detection frameworks in
+              a unified manner, while also allowing straightforward adaptation for universal
+              applicability across datasets. Experiments are conducted across multiple dataset
+              consolidation scenarios involving KITTI, Waymo, and nuScenes, demonstrating
+              that our Uni2Det outperforms existing methods by a large margin in multi-dataset
+              training. Furthermore, results on zero-shot cross-dataset transfer validate the
+              generalization capability of our proposed method.
+            </p>
+            </h6>
+
+          <div class="w3-content" style="text-align: justify">
+          <p>
+          </p>
+          </div>
+      </td>
+      </tr>
+      </tbody></table>
+
+      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+
+      <tr>
+      <td style="padding:10px;width:25%;vertical-align:top">
+        <div class="one" >
+            <img src='./Publications/img/metaprompt.png' style="height:100%;width:160%; position: absolute;top: 10%">
         </div>
       </td>
 
       <td style="padding:40px;width:75%;vertical-align:middle">
           <papertitle>Learning Domain Invariant Prompt for Vision-Language Models</papertitle>
           <br>
-          Cairong Zhao<strong>*</strong>, <strong>Yubin Wang*</strong>, Xinyang Jiang, Yifei Shen, Kaitao Song, Dongsheng Li, Duoqian Miao
+          Cairong Zhao<strong>*</strong>, <strong class="author-highlight">Yubin Wang*</strong>, Xinyang Jiang, Yifei Shen, Kaitao Song, Dongsheng Li, Duoqian Miao
           <br>
-          <em>IEEE Transactions on Image Processing</em>, TIP (CCF-A, SCI)
+          <em>IEEE Transactions on Image Processing</em>, <span class="venue-highlight">TIP</span> (CCF-A, SCI)
           <br>
           <a href="./Publications/pdf/metaprompt.pdf">[PDF]</a>
           <a href="https://github.com/Vill-Lab/2024-TIP-MetaPrompt">[Code]</a>
-          <a href="#" onclick="showPopup()">[BibTeX]</a>
           <br>
-          <div class="arrow" onclick="toggleContent(this)">▶ Abstract</div>
+          <div class="arrow" style="cursor: pointer;" onclick="toggleContent(this)">▶ Abstract</div>
           <div class="content">
-            <h6 style="font-family:calibri;font-weight:lighter;color:#3c3b34">Prompt learning stands out as one of the most efficient approaches for adapting powerful vision-language foundational models like CLIP to downstream datasets by tuning learnable prompt vectors with very few samples. However, despite its
+            <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">Prompt learning stands out as one of the most efficient approaches for adapting powerful vision-language foundational models like CLIP to downstream datasets by tuning learnable prompt vectors with very few samples. However, despite its
               success in achieving remarkable performance on in-domain data,
               prompt learning still faces the significant challenge of effectively
               generalizing to novel classes and domains. Some existing methods
@@ -196,72 +534,36 @@
               benchmarks in domain generalization.</p>
             </h6>
 
-          <script>
-          function toggleContent(element) {
-            var content = element.nextElementSibling;
-            if (content.style.display === "none") {
-              content.style.display = "block";
-              element.textContent = "▼ Abstract";
-            } else {
-              content.style.display = "none";
-              element.textContent = "▶ Abstract";
-            }
-          }
-          </script>
           <div class="w3-content" style="text-align: justify">
           <p>
           </p>
           </div>
       </td>
-      <div id="popup" class="popup">
-        <!-- 这里是弹窗中的自定义内容 -->
-        <h6 style="font-weight:lighter;">@article{zhao2024learning, <br>
-          &nbsp;&nbsp;&nbsp;&nbsp;title={Learning Domain Invariant Prompt for Vision-Language Models}, <br>
-          &nbsp;&nbsp;&nbsp;&nbsp;author={Zhao, Cairong and Wang, Yubin and Jiang, Xinyang and Shen, Yifei and Song, Kaitao and Li, Dongsheng and Miao, Duoqian}, <br>
-          &nbsp;&nbsp;&nbsp;&nbsp;journal={IEEE Transactions on Image Processing}, <br>
-          &nbsp;&nbsp;&nbsp;&nbsp;volume={33}, <br>
-          &nbsp;&nbsp;&nbsp;&nbsp;pages={1348--1360}, <br>
-          &nbsp;&nbsp;&nbsp;&nbsp;year={2024}, <br>
-          &nbsp;&nbsp;&nbsp;&nbsp;publisher={IEEE} <br>
-        }</h6>
-
-        <button onclick="hidePopup()">close</button>
-      </div>
-      
-      <script>
-      function showPopup() {
-        document.getElementById("popup").style.display = "block"; // 显示弹窗
-      }
-      
-      function hidePopup() {
-        document.getElementById("popup").style.display = "none"; // 隐藏弹窗
-      }
-      </script>
-
+      </tr>
+      </tbody></table>
 
       <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
-      <tr></tr>
-      <td style="padding:10px;width:25%;height:80%;vertical-align:middle">
+      <tr>
+      <td style="padding:10px;width:25%;vertical-align:top">
         <div class="one" >
-            <img src='./Publications/img/hpt.png' style="height:100%;width:160%; position: absolute;top: -0%">
+            <img src='./Publications/img/hpt.png' style="height:100%;width:160%; position: absolute;top: 10%">
         </div>
       </td>
 
       <td style="padding:40px;width:75%;vertical-align:middle">
           <papertitle>Learning Hierarchical Prompt with Structured Linguistic Knowledge for Vision-Language Models</papertitle>
           <br>
-          <strong>Yubin Wang</strong>, Xinyang Jiang, De Cheng, Dongsheng Li, Cairong Zhao
+          <strong class="author-highlight">Yubin Wang</strong>, Xinyang Jiang, De Cheng, Dongsheng Li, Cairong Zhao
           <br>
-          <em>The 38th Annual AAAI Conference on Artificial Intelligence</em>, AAAI 2024 (CCF-A)
+          <em>The 38th Annual AAAI Conference on Artificial Intelligence</em>, <span class="venue-highlight">AAAI 2024</span> (CCF-A)
           <br>
           <a href="./Publications/pdf/hpt.pdf">[PDF]</a>
           <a href="https://github.com/Vill-Lab/2024-AAAI-HPT">[Code]</a>
-          <a href="#" onclick="showPopup1()">[BibTeX]</a>
           <br>
-          <div class="arrow" onclick="toggleContent(this)">▶ Abstract</div>
+          <div class="arrow" style="cursor: pointer;" onclick="toggleContent(this)">▶ Abstract</div>
           <div class="content">
-            <h6 style="font-family:calibri;font-weight:lighter;color:#3c3b34">Prompt learning has become a prevalent strategy for adapting
+            <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">Prompt learning has become a prevalent strategy for adapting
               vision-language foundation models to downstream tasks. As
               large language models (LLMs) have emerged, recent studies
               have explored the use of category-related descriptions as input to enhance prompt effectiveness. Nevertheless, conventional descriptions fall short of structured information that
@@ -279,69 +581,35 @@
               existing SOTA methods.</p>
             </h6>
 
-          <script>
-          function toggleContent(element) {
-            var content = element.nextElementSibling;
-            if (content.style.display === "none") {
-              content.style.display = "block";
-              element.textContent = "▼ Abstract";
-            } else {
-              content.style.display = "none";
-              element.textContent = "▶ Abstract";
-            }
-          }
-          </script>
           <div class="w3-content" style="text-align: justify">
           <p>
           </p>
           </div>
       </td>
-      <div id="popup1" class="popup">
-        <!-- 这里是弹窗中的自定义内容 -->
-        <h6 style="font-weight:lighter;">@inproceedings{wang2024learning, <br>
-          &nbsp;&nbsp;&nbsp;&nbsp;title={Learning Hierarchical Prompt with Structured Linguistic Knowledge for Vision-Language Models}, <br>
-          &nbsp;&nbsp;&nbsp;&nbsp;author={Wang, Yubin and Jiang, Xinyang and Cheng, De and Li, Dongsheng and Zhao, Cairong}, <br>
-          &nbsp;&nbsp;&nbsp;&nbsp;booktitle={Proceedings of the AAAI Conference on Artificial Intelligence}, <br>
-          &nbsp;&nbsp;&nbsp;&nbsp;volume={38}, <br>
-          &nbsp;&nbsp;&nbsp;&nbsp;number={6}, <br>
-          &nbsp;&nbsp;&nbsp;&nbsp;pages={5749--5757}, <br>
-          &nbsp;&nbsp;&nbsp;&nbsp;year={2024} <br>
-        }</h6>
-        <button onclick="hidePopup1()">close</button>
-      </div>
-
-      <script>
-      function showPopup1() {
-        document.getElementById("popup1").style.display = "block"; // 显示弹窗
-      }
-
-      function hidePopup1() {
-        document.getElementById("popup1").style.display = "none"; // 隐藏弹窗
-      }
-      </script>
+      </tr>
+      </tbody></table>
 
 <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
-  <tr></tr>
-  <td style="padding:10px;width:25%;height:80%;vertical-align:middle">
+  <tr>
+  <td style="padding:10px;width:25%;vertical-align:top">
     <div class="one" >
-        <img src='./Publications/img/pman.png' style="height:100%;width:160%; position: absolute;top: -0%">
+        <img src='./Publications/img/pman.png' style="height:100%;width:160%; position: absolute;top: 10%">
     </div>
   </td>
 
   <td style="padding:40px;width:75%;vertical-align:middle">
       <papertitle>Part-Based Multi-Scale Attention Network for Text-Based Person Search</papertitle>
       <br>
-      <strong>Yubin Wang</strong>, Ding Qi, Cairong Zhao
+      <strong class="author-highlight">Yubin Wang</strong>, Ding Qi, Cairong Zhao
       <br>
-      <em>Chinese Conference on Pattern Recognition and Computer Vision</em>, PRCV 2022 (CCF-C, Oral)
+      <em>Chinese Conference on Pattern Recognition and Computer Vision</em>, <span class="venue-highlight">PRCV 2022</span> (CCF-C, Oral)
       <br>
       <a href="./Publications/pdf/pman.pdf">[PDF]</a>
-      <a href="#" onclick="showPopup2()">[BibTeX]</a>
       <br>
-      <div class="arrow" onclick="toggleContent(this)">▶ Abstract</div>
+      <div class="arrow" style="cursor: pointer;" onclick="toggleContent(this)">▶ Abstract</div>
       <div class="content">
-        <h6 style="font-family:calibri;font-weight:lighter;color:#3c3b34">Text-based person search aims to retrieve the target person in an image gallery based on textual descriptions. Solving such a
+        <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">Text-based person search aims to retrieve the target person in an image gallery based on textual descriptions. Solving such a
           fine-grained cross-modal retrieval problem is very challenging due
           to differences between modalities. Moreover, the inter-class variance of both
           person images and descriptions is small, and more semantic information
@@ -359,69 +627,35 @@
           state-of-the-art methods on CUHK-PEDES datasets.</p>
         </h6>
 
-      <script>
-      function toggleContent(element) {
-        var content = element.nextElementSibling;
-        if (content.style.display === "none") {
-          content.style.display = "block";
-          element.textContent = "▼ Abstract";
-        } else {
-          content.style.display = "none";
-          element.textContent = "▶ Abstract";
-        }
-      }
-      </script>
       <div class="w3-content" style="text-align: justify">
       <p>
       </p>
       </div>
   </td>
-  <div id="popup2" class="popup">
-    <!-- 这里是弹窗中的自定义内容 -->
-    <h6 style="font-weight:lighter;">@inproceedings{wang2022part, <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;title={Part-Based Multi-Scale Attention Network for Text-Based Person Search}, <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;author={Wang, Yubin and Qi, Ding and Zhao, Cairong}, <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;booktitle={Chinese Conference on Pattern Recognition and Computer Vision (PRCV)}, <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;pages={462--474}, <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;year={2022}, <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;organization={Springer} <br>
-    }</h6>
-
-    <button onclick="hidePopup2()">close</button>
-  </div>
-
-  <script>
-  function showPopup2() {
-    document.getElementById("popup2").style.display = "block"; // 显示弹窗
-  }
-
-  function hidePopup2() {
-    document.getElementById("popup2").style.display = "none"; // 隐藏弹窗
-  }
-  </script>
+  </tr>
+  </tbody></table>
 
 <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
-  <tr></tr>
-  <td style="padding:10px;width:25%;height:80%;vertical-align:middle">
+  <tr>
+  <td style="padding:10px;width:25%;vertical-align:top">
     <div class="one" >
-        <img src='./Publications/img/opsum.png' style="height:100%;width:160%; position: absolute;top: -0%">
+        <img src='./Publications/img/opsum.png' style="height:100%;width:160%; position: absolute;top: 10%">
     </div>
   </td>
 
   <td style="padding:40px;width:75%;vertical-align:middle">
       <papertitle>An Opinion Summarization-Evaluation System Based on Pre-trained Models</papertitle>
       <br>
-      Han Jiang<strong>*</strong>, <strong>Yubin Wang*</strong>, Songhao Lv, Zhihua Wei
+      Han Jiang<strong>*</strong>, <strong class="author-highlight">Yubin Wang*</strong>, Songhao Lv, Zhihua Wei
       <br>
-      <em>Rough Sets: International Joint Conference</em>, IJCRS 2021
+      <em>Rough Sets: International Joint Conference</em>, <span class="venue-highlight">IJCRS 2021</span>
       <br>
       <a href="./Publications/pdf/opsum.pdf">[PDF]</a>
-      <a href="#" onclick="showPopup3()">[BibTeX]</a>
       <br>
-      <div class="arrow" onclick="toggleContent(this)">▶ Abstract</div>
+      <div class="arrow" style="cursor: pointer;" onclick="toggleContent(this)">▶ Abstract</div>
       <div class="content">
-        <h6 style="font-family:calibri;font-weight:lighter;color:#3c3b34">As social media appeal more frequently used, the task of extracting
+        <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">As social media appeal more frequently used, the task of extracting
           the mainstream opinions of the discussions arising from the media, i. e. opinion
           summarization, has drawn considerable attention. This paper proposes an opinion
           summarization-evaluation system containing a pipeline and an evaluation module
@@ -433,47 +667,17 @@
           conducted to prove that each part of the pipeline takes effect significantly.</p>
         </h6>
 
-      <script>
-      function toggleContent(element) {
-        var content = element.nextElementSibling;
-        if (content.style.display === "none") {
-          content.style.display = "block";
-          element.textContent = "▼ Abstract";
-        } else {
-          content.style.display = "none";
-          element.textContent = "▶ Abstract";
-        }
-      }
-      </script>
       <div class="w3-content" style="text-align: justify">
       <p>
       </p>
       </div>
   </td>
-  <div id="popup3" class="popup">
-    <!-- 这里是弹窗中的自定义内容 -->
-    <h6 style="font-weight:lighter;">@inproceedings{jiang2021opinion, <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;title={An Opinion Summarization-Evaluation System Based on Pre-trained Models}, <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;author={Jiang, Han and Wang, Yubin and Lv, Songhao and Wei, Zhihua}, <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;booktitle={Rough Sets: International Joint Conference, IJCRS 2021, Bratislava, Slovakia, September 19--24, 2021, Proceedings}, <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;pages={225--230}, <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;year={2021}, <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;organization={Springer} <br>
-    }</h6>
-
-    <button onclick="hidePopup3()">close</button>
-  </div>
-
-  <script>
-  function showPopup3() {
-    document.getElementById("popup3").style.display = "block"; // 显示弹窗
-  }
-
-  function hidePopup3() {
-    document.getElementById("popup3").style.display = "none"; // 隐藏弹窗
-  }
-  </script>
+  </tr>
+  </tbody></table>
+</div>
       
+<!-- Preprint部分 -->
+<div class="glass-container">
 <table width="100%" align="center" border="0" cellspacing="0" style="padding-top:20px;padding-left:20px;padding-bottom:5px"><tbody>
   <tr> <td>
           <heading>Preprint or Unpublished Papers</heading>
@@ -483,167 +687,57 @@
 
 <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
-  <tr></tr>
-  <td style="padding:10px;width:25%;height:80%;vertical-align:middle">
+  <tr>
+  <td style="padding:10px;width:25%;vertical-align:top">
     <div class="one" >
-        <img src='./Publications/img/actprompt.png' style="height:100%;width:160%; position: absolute;top: -0%">
+        <img src='./Publications/img/hil.png' style="height:100%;width:160%; position: absolute;top: 10%">
     </div>
   </td>
 
   <td style="padding:40px;width:75%;vertical-align:middle">
-      <papertitle>ActPrompt: In-Domain Feature Adaptation via Action Cues for Video Temporal Grounding</papertitle>
+      <papertitle>Hierarchical Identity Learning for Unsupervised Visible-Infrared Person Re-Identification</papertitle>
       <br>
-      <strong>Yubin Wang</strong>, Xinyang Jiang, De Cheng, Dongsheng Li, Cairong Zhao
+      Haonan Shi, <strong class="author-highlight">Yubin Wang</strong>, De Cheng, Lingfeng He, Nannan Wang, Xinbo Gao
       <br>
-      <em>arXiv preprint arXiv:2408.06622, 2024.</em> Under AAAI 2025 peer review
+      <em>IEEE Transactions on Image Processing</em>, <span class="venue-highlight">TIP</span> (CCF-A, SCI)
       <br>
-      <a href="./Publications/pdf/actprompt.pdf">[PDF]</a>
-      <a href="#" onclick="showPopup4()">[BibTeX]</a>
+      <a href="./Publications/pdf/hil.pdf">[PDF]</a>
       <br>
-      <div class="arrow" onclick="toggleContent(this)">▶ Abstract</div>
+      <div class="arrow" style="cursor: pointer;" onclick="toggleContent(this)">▶ Abstract</div>
       <div class="content">
-        <h6 style="font-family:calibri;font-weight:lighter;color:#3c3b34">Video temporal grounding is an emerging topic aiming to
-          identify specific clips within videos. In addition to pre-trained 
-          video models, contemporary methods utilize pre-trained
-          vision-language models (VLM) to capture detailed
-          characteristics of diverse scenes and objects from video
-          frames. However, as pre-trained on images, VLM may struggle
-          to distinguish action-sensitive patterns from static objects,
-          making it necessary to adapt them to specific data
-          domains for effective feature representation over temporal
-          grounding. We address two primary challenges to achieve this
-          goal. Specifically, to mitigate high adaptation costs, we propose
-           an efficient preliminary in-domain fine-tuning paradigm
-          for feature adaptation, where downstream-adaptive features
-          are learned through several pretext tasks. Furthermore, to
-          integrate action-sensitive information into VLM, we introduce
-          Action-Cue-Injected Temporal Prompt Learning (ActPrompt), 
-          which injects action cues into the image encoder of
-          VLM for better discovering action-sensitive patterns. Extensive
-          experiments demonstrate that ActPrompt is an off-the-shelf 
-          training framework that can be effectively applied to
-          various SOTA methods, resulting in notable improvements.
+        <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">Unsupervised visible-infrared person reidentification (USVI-ReID) aims to learn modality-invariant image features from unlabeled cross-modal person datasets by reducing the modality gap while minimizing reliance on costly manual annotations. Existing methods typically address USVI-ReID using cluster-based contrastive learning, which represents a person by a single cluster center. However, they primarily focus on the commonality of images within each cluster while neglecting the finer-grained differences among them. To address the limitation, we propose a Hierarchical Identity Learning (HIL) framework. Since each cluster may contain several smaller sub-clusters that reflect fine-grained variations among images, we generate multiple memories for each existing coarse-grained cluster via a secondary clustering. Additionally, we propose Multi-Center Contrastive Learning (MCCL) to refine representations for enhancing intra-modal clustering and minimizing cross-modal discrepancies. To further improve cross-modal matching quality, we design a Bidirectional Reverse Selection Transmission (BRST) mechanism, which establishes reliable cross-modal correspondences by performing bidirectional matching of pseudo-labels. Extensive experiments conducted on the SYSU-MM01 and RegDB datasets demonstrate that the proposed method outperforms existing approaches.
         </p>
         </h6>
 
-      <script>
-      function toggleContent(element) {
-        var content = element.nextElementSibling;
-        if (content.style.display === "none") {
-          content.style.display = "block";
-          element.textContent = "▼ Abstract";
-        } else {
-          content.style.display = "none";
-          element.textContent = "▶ Abstract";
-        }
-      }
-      </script>
       <div class="w3-content" style="text-align: justify">
       <p>
       </p>
       </div>
   </td>
-  <div id="popup4" class="popup">
-    <!-- 这里是弹窗中的自定义内容 -->
-    <h6 style="font-weight:lighter;">@article{wang2024actprompt, <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;title={ActPrompt: In-Domain Feature Adaptation via Action Cues for Video Temporal Grounding}, <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;author={Wang, Yubin and Jiang, Xinyang and Cheng, De and Li, Dongsheng and Zhao, Cairong}, <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;journal={arXiv preprint arXiv:2408.06622}, <br>
-      &nbsp;&nbsp;&nbsp;&nbsp;year={2024} <br>
-    }</h6>
-
-    <button onclick="hidePopup4()">close</button>
-  </div>
-
-  <script>
-  function showPopup4() {
-    document.getElementById("popup4").style.display = "block"; // 显示弹窗
-  }
-
-  function hidePopup4() {
-    document.getElementById("popup4").style.display = "none"; // 隐藏弹窗
-  }
-  </script>
+  </tr>
+  </tbody></table>
 
 <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
-  <tr></tr>
-  <td style="padding:10px;width:25%;height:80%;vertical-align:middle">
+  <tr>
+  <td style="padding:10px;width:25%;vertical-align:top">
     <div class="one" >
-        <img src='./Publications/img/uni2det.png' style="height:100%;width:160%; position: absolute;top: -0%">
-    </div>
-  </td>
-
-  <td style="padding:40px;width:75%;vertical-align:middle">
-      <papertitle>Uni<sup>2</sup>Det: Unified and Universal Framework for Prompt-Guided Multi-dataset 3D Detection</papertitle>
-      <br>
-      <strong>Yubin Wang*</strong>, Zhikang Zou*, Xiaoqing Ye, Xiao Tan, Errui Ding, Cairong Zhao
-      <br>
-      <em></em>Under NeurIPS 2025 peer review
-      <br>
-      <a href="./Publications/pdf/uni2det.pdf">[PDF]</a>
-      <br>
-      <div class="arrow" onclick="toggleContent(this)">▶ Abstract</div>
-      <div class="content">
-        <h6 style="font-family:calibri;font-weight:lighter;color:#3c3b34">We present Uni<sup>2</sup>Det, a brand new framework for unified and universal multi-
-          dataset training on 3D detection, enabling robust performance across diverse
-          domains and generalization to unseen domains. Due to substantial disparities in
-          data distribution and variations in taxonomy across diverse domains, training such
-          a detector by simply merging datasets poses a significant challenge. Motivated by
-          this observation, we introduce multi-stage prompting modules for multi-dataset 3D
-          detection, which leverages prompts based on the characteristics of corresponding
-          datasets to mitigate existing differences. This elegant design facilitates seamless
-          plug-and-play integration within various advanced 3D detection frameworks in
-          a unified manner, while also allowing straightforward adaptation for universal
-          applicability across datasets. Experiments are conducted across multiple dataset
-          consolidation scenarios involving KITTI, Waymo, and nuScenes, demonstrating
-          that our Uni2Det outperforms existing methods by a large margin in multi-dataset
-          training. Furthermore, results on zero-shot cross-dataset transfer validate the
-          generalization capability of our proposed method.
-        </p>
-        </h6>
-
-      <script>
-      function toggleContent(element) {
-        var content = element.nextElementSibling;
-        if (content.style.display === "none") {
-          content.style.display = "block";
-          element.textContent = "▼ Abstract";
-        } else {
-          content.style.display = "none";
-          element.textContent = "▶ Abstract";
-        }
-      }
-      </script>
-      <div class="w3-content" style="text-align: justify">
-      <p>
-      </p>
-      </div>
-  </td>
-  </script>
-</body>
-
-<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-
-  <tr></tr>
-  <td style="padding:10px;width:25%;height:80%;vertical-align:middle">
-    <div class="one" >
-        <img src='./Publications/img/hpt++.png' style="height:100%;width:160%; position: absolute;top: -0%">
+        <img src='./Publications/img/hpt++.png' style="height:100%;width:160%; position: absolute;top: 10%">
     </div>
   </td>
 
   <td style="padding:40px;width:75%;vertical-align:middle">
       <papertitle>HPT++: Hierarchically Prompting Vision-Language Models with Multi-Granularity Knowledge Generation and Improved Structure Modeling</papertitle>
       <br>
-      <strong>Yubin Wang</strong>, Xinyang Jiang, De Cheng, Wenli Sun, Dongsheng Li, Cairong Zhao
+      <strong class="author-highlight">Yubin Wang</strong>, Xinyang Jiang, De Cheng, Wenli Sun, Dongsheng Li, Cairong Zhao
       <br>
-      <em></em>Under IJCV peer review
+      <em>Artificial Intelligence</em>, <span class="venue-highlight">AI</span> (CCF-A, SCI)
       <br>
       <a href="./Publications/pdf/hpt++.pdf">[PDF]</a>
       <br>
-      <div class="arrow" onclick="toggleContent(this)">▶ Abstract</div>
+      <div class="arrow" style="cursor: pointer;" onclick="toggleContent(this)">▶ Abstract</div>
       <div class="content">
-        <h6 style="font-family:calibri;font-weight:lighter;color:#3c3b34">Prompt learning has become a prevalent strategy for adapting vision-language foundation models
+        <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">Prompt learning has become a prevalent strategy for adapting vision-language foundation models
           (VLMs) such as CLIP to downstream tasks. With the emergence of large language models (LLMs),
           recent studies have explored the potential of using category-related descriptions to enhance prompt
           effectiveness. However, conventional descriptions lack explicit structured information necessary to
@@ -665,44 +759,31 @@
         </p>
         </h6>
 
-      <script>
-      function toggleContent(element) {
-        var content = element.nextElementSibling;
-        if (content.style.display === "none") {
-          content.style.display = "block";
-          element.textContent = "▼ Abstract";
-        } else {
-          content.style.display = "none";
-          element.textContent = "▶ Abstract";
-        }
-      }
-      </script>
       <div class="w3-content" style="text-align: justify">
       <p>
       </p>
       </div>
   </td>
+  </tr>
+  </tbody></table>
+  </div>
   </div>
 
-        <!-- ------------------------ News------------------------------- -->
+<!-- About Me部分 -->
+<div class="glass-container">
+      <!-- ------------------------ About Me------------------------------- -->
       <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
         <tr>
           <td style="padding:20px;width:100%;vertical-align:middle">
             <heading>About Me</heading>
             <hr />
             <p>
-              I'm Wang Yubin. My hometown is Fuzhou, Fujian Province, China. I am currently pursuing a master degree at 
-              Tongji University in Shanghai, focusing on computer vision and multi-modal learning.<br><br>
-              I am very interested in various sports, and in my spare time, I enjoy cycling, 
-              playing badminton, playing football, watching sports games like NBA, F1, UEFA Champoinships League
-              and so on. My favorite NBA star is Chris Paul, my favorite football team is Bayern Munich, and my favorite player is 
-              Thomas Müller. I also like to draw inspiration from music, and some of my favorite artists include David Tao, 
-              Jude Chiu, Stefanie Sun, LaLa Hsu, Shawn Mendes, Harry Styles, and Olivia Rodrigo. My MBTI personality is ISFJ.<br><br>
-              
+              I'm Wang Yubin. My hometown is Fuzhou, Fujian Province, China. 
               I hope to meet more like-minded friends through this platform, so we can exchange ideas and grow together!
             </p>
           </td>
         </tr>
       </tbody></table>
+</div>
 
 </html>
