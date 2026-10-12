@@ -1,11 +1,10 @@
 <!DOCTYPE HTML>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
-  <meta name="author" content=" ">
-  <meta name="description" content=" ">
-  <meta name="keywords" content=" ">
+  <meta name="author" content="Yubin Wang">
+  <meta name="description" content="Yubin Wang is an algorithm engineer at Shanghai AI Lab researching AI for chemistry, computer vision, and multimodal learning. Explore his publications and news.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Welcome to My Homepage</title>
+  <title>Yubin Wang (王雨滨) | Research and Publications</title>
  
  
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
@@ -50,22 +49,31 @@
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
+    padding: 4px 0;
+    border: 0;
+    background: transparent;
+    color: #ffffff;
+    font: inherit;
+    font-size: 18px;
+    text-align: left;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
   }
-  .content {
+  .arrow:focus-visible {
+    outline: 2px solid #00f2fe;
+    outline-offset: 3px;
+  }
+  .content[hidden] {
     display: none;
   }
 </style>
 
 <script>
-  function toggleContent(element) {
-    var content = element.nextElementSibling;
-    if (content.style.display === "none" || content.style.display === "") {
-      content.style.display = "block";
-      element.textContent = "▼ Abstract";
-    } else {
-      content.style.display = "none";
-      element.textContent = "▶ Abstract";
-    }
+  function toggleContent(button) {
+    const content = button.nextElementSibling;
+    const expanded = button.getAttribute('aria-expanded') === 'true';
+    content.hidden = expanded;
+    button.setAttribute('aria-expanded', String(!expanded));
+    button.textContent = expanded ? '▶ Abstract' : '▼ Abstract';
   }
 
   // 背景视差滚动效果
@@ -83,11 +91,10 @@
 <body>
 <!-- 顶部个人信息部分 -->
 <div class="glass-container">
-<div style="display: flex; justify-content: flex-start; align-items: center; padding-left: 20px;">
-  <script src="../typewriter.js"></script>
-  <div style='background-color: rgba(0, 0, 0, 0.5);height: 0px; font-family:"Consolas";'><br>
+<div class="terminal-header" style="display: flex; justify-content: flex-start; align-items: center; padding-left: 20px;">
+  <div class="terminal-line">
       <strong style='color:#bd4527;font-family:"Courier New", "Courier", "Monaco", "Consolas", monospace;'>thomas</strong><strong style='color:#ffffff;font-family:"Courier New", "Courier", "Monaco", "Consolas", monospace;'>@</strong><strong style='color:#66c428;font-family:"Courier New", "Courier", "Monaco", "Consolas", monospace;'>wang</strong><a style='color:#58ACFA;font-family:"Courier New", "Courier", "Monaco", "Consolas", monospace;'>:~/$ </a>
-      <a id="btapp" style='color:#ffffff;font-family:"Courier New", "Courier", "Monaco", "Consolas", monospace;font-size:16px;letter-spacing:1px;text-shadow: 0 0 10px rgba(0, 242, 254, 0.8);display: inline-block;min-width: 0;'></a>
+      <a id="btapp" style='color:#ffffff;font-family:"Courier New", "Courier", "Monaco", "Consolas", monospace;font-size:16px;letter-spacing:1px;text-shadow: 0 0 10px rgba(0, 242, 254, 0.8);'></a>
       <span id="cursor" style='color:#00f2fe;font-weight:bold;font-family:"Courier New", "Courier", "Monaco", "Consolas", monospace;animation: blink 1s infinite;text-shadow: 0 0 10px rgba(0, 242, 254, 1), 0 0 20px rgba(0, 242, 254, 0.6);'>|</span>
       <script>
           const btapp = document.getElementById('btapp');
@@ -157,9 +164,13 @@
           }
           
           // 启动打字机
-          currentText = getRandomQuote();
-          isTyping = true;
-          typeText();
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+              btapp.textContent = quotes[0];
+          } else {
+              currentText = getRandomQuote();
+              isTyping = true;
+              typeText();
+          }
       </script>
       <style>
           @keyframes blink {
@@ -174,30 +185,29 @@
   <table style="width:100%;max-width:1000px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
     <tr style="padding:0px">
       <td style="padding:0px">
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+        <table class="profile-table" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
           <tr style="padding:0px">
             <td style="padding:2.5%;width:63%;vertical-align:middle">
-              <p style="text-align:center">
-                <name>Yubin Wang&nbsp; &nbsp;(王雨滨)</name><br>
-                <h5 style="text-align:center">Email: yubinwang628@gmail.com&nbsp; &nbsp;|&nbsp; &nbsp;wangyubin@pjlab.org.cn</h6>
-              </p>
+              <div class="profile-heading">
+                <h1 class="profile-name">Yubin Wang&nbsp; &nbsp;(王雨滨)</h1>
+                <p class="profile-email">Email: <a href="mailto:yubinwang628@gmail.com">yubinwang628@gmail.com</a> &nbsp;|&nbsp; <a href="mailto:wangyubin@pjlab.org.cn">wangyubin@pjlab.org.cn</a></p>
+              </div>
               <div class="w3-content" style="text-align: justify">
-              I am currently working as an algorithm engineer at OpenDataLab, Shanghai AI Lab. My main focus is on research and development for parsing chemistry-related documents. I earned my Master's degree from Tongji University in 2025, where I was advised by <a href='https://vill-lab.github.io/'>Prof. Cairong Zhao</a>. Prior to my current role, I worked as a research intern at Baidu Inc., collaborating closely with <a href='https://bigteacher-777.github.io/'>Zhikang Zou</a> and <a href='https://shuluoshu.github.io/'>Dr. Xiaoqing Ye</a>. I also completed a research internship in the AI/ML Group at Microsoft Research Asia, Shanghai, under the supervision of <a href='https://scholar.google.com/citations?user=JiTfWVMAAAAJ'>Dr. Xinyang Jiang</a> and <a href='http://recmind.cn/'>Dr. Dongsheng Li</a>. Additionally, I maintain a deep academic collaboration with <a href='https://web.xidian.edu.cn/dcheng/index.html'>Prof. De Cheng</a> from Xidian University. My research interests focus on computer vision and multi-modal learning, with specific work in prompt learning on VLMs, explainability and knowledge discovery in vision, text-based person re-identification, video temporal grounding, point-based 3D detection, and related areas.
-              </p>
+              I am currently working as an algorithm engineer at Shanghai AI Lab. My main focus is on research and development for parsing chemistry-related documents. I earned my Master's degree from Tongji University in 2025, where I was advised by <a href='https://vill-lab.github.io/'>Prof. Cairong Zhao</a>. Prior to my current role, I worked as a research intern at Baidu Inc., collaborating closely with <a href='https://bigteacher-777.github.io/'>Zhikang Zou</a> and <a href='https://shuluoshu.github.io/'>Dr. Xiaoqing Ye</a>. I also completed a research internship in the AI/ML Group at Microsoft Research Asia, Shanghai, under the supervision of <a href='https://scholar.google.com/citations?user=JiTfWVMAAAAJ'>Dr. Xinyang Jiang</a> and <a href='http://recmind.cn/'>Dr. Dongsheng Li</a>. Additionally, I maintain a deep academic collaboration with <a href='https://web.xidian.edu.cn/dcheng/index.html'>Prof. De Cheng</a> from Xidian University. My research interests focus on computer vision and multi-modal learning, with specific work in prompt learning on VLMs, explainability and knowledge discovery in vision, text-based person re-identification, video temporal grounding, point-based 3D detection, and related areas.
               </div>
               <p style="text-align:center">
-                <a class="icon-link" href="https://scholar.google.com/citations?user=mLeYNLoAAAAJ" title="Google Scholar" target="_blank">
+                <a class="icon-link" href="https://scholar.google.com/citations?user=mLeYNLoAAAAJ" title="Google Scholar" aria-label="Google Scholar profile" target="_blank" rel="noopener noreferrer">
                   <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#3aba69" style="margin: 0 15px; filter: drop-shadow(0 0 10px rgba(58, 186, 105, 0.6)); transition: all 0.3s ease; vertical-align: middle; display: inline-block; line-height: 32px;">
                     <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
                   </svg>
                 </a>
-                <a class="icon-link" href="https://github.com/ThomasWangY" title="Github" target="_blank">
+                <a class="icon-link" href="https://github.com/ThomasWangY" title="GitHub" aria-label="GitHub profile" target="_blank" rel="noopener noreferrer">
                   <i class="fab fa-github" style="font-size: 32px; color: #977937; margin: 0 15px; text-shadow: 0 0 10px rgba(151, 121, 55, 0.6); transition: all 0.3s ease; vertical-align: middle; line-height: 32px;"></i>
                 </a>
               </p>
             </td>
             <td style="padding:5% 3% 3% 3%;width:40%;max-width:40%">
-              <a><img style="width:100%;max-width:120%" alt="profile photo" src="profile.jpg" class="hoverZoomLink"></a>
+              <img style="width:100%;max-width:120%;height:auto" alt="Portrait of Yubin Wang" src="profile.webp" width="960" height="1707" class="hoverZoomLink">
             </td>
           </tr>
       </tbody></table>
@@ -219,6 +229,22 @@
               <div class="timeline-scroll-container">
               <div class="timeline">
               <div class="timeline-item">
+                <div class="timeline-date">2026.09</div>
+                <div class="timeline-content">One paper introducing a benchmark for conditional optimization was accepted by NeurIPS 2026.</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-date">2026.09</div>
+                <div class="timeline-content">The technical report on DianShi-RxnDB, an organic reaction database, was released.</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-date">2026.05</div>
+                <div class="timeline-content">One paper on spectral learning was accepted by KDD 2026.</div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-date">2026.05</div>
+                <div class="timeline-content">One paper on cross-modal person re-identification was accepted by TIP.</div>
+              </div>
+              <div class="timeline-item">
                 <div class="timeline-date">2026.02</div>
                 <div class="timeline-content">One paper about video temporal grounding accepted by TIP.</div>
               </div>
@@ -228,7 +254,7 @@
               </div>
               <div class="timeline-item">
                 <div class="timeline-date">2025.05</div>
-                <div class="timeline-content">Joined OpenDataLab as an algorithm engineer. Focus on parsing chemistry-related documents.</div>
+                <div class="timeline-content">Joined Shanghai AI Lab as an algorithm engineer. Focus on parsing chemistry-related documents.</div>
               </div>
               <div class="timeline-item">
                 <div class="timeline-date">2025.03</div>
@@ -339,24 +365,85 @@
 </div>
 
 <!-- Publications部分 -->
-<div class="glass-container">
+<div class="glass-container publications-container">
       <!-- ------------------------ publications------------------------------- -->
 
       <table width="100%" align="center" border="0" cellspacing="0" style="padding-top:20px;padding-left:20px;padding-bottom:5px"><tbody>
         <tr> <td>
                 <heading>Publications</heading>
                 <hr />
-                <p style="color:#ffffff;font-size:16px;">(<strong>*</strong>equal contribution; only papers as first authors are included)</p>
           </td> </tr>
       </tbody> </table>
 
 
-      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <table class="paper-entry" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+
+      <tr>
+      <td style="padding:10px;width:25%;vertical-align:top">
+        <div class="one"><img src="./Publications/img/RxnOptBench.png" alt="RxnOptBench workflow" loading="lazy" style="height:100%;width:160%; position: absolute;top: 10%"></div>
+      </td>
+      <td style="padding:40px;width:75%;vertical-align:middle">
+        <papertitle>RxnOptBench: Benchmarking LLMs for Reaction-Condition Optimization in Organic Methodology</papertitle>
+        <br>
+        Lingli Ge, <strong class="author-highlight">Yubin Wang</strong>, Junyuan Gao, Jiahe Song, Jiaxing Sun, Boyu Zhu, Haote Yang, Jingchao Wang, Lixin Ma, Jiang Wu, Yuqiang Li, Conghui He
+        <br>
+        <em>The 40th Annual Conference on Neural Information Processing Systems, Evaluations and Datasets Track</em>, <span class="venue-highlight">NeurIPS 2026</span> (CCF-A)
+        <br>
+        <a href="https://arxiv.org/pdf/2610.02242">[PDF]</a>
+        <br>
+        <button class="arrow" type="button" aria-expanded="false" aria-controls="abstract-1" onclick="toggleContent(this)">▶ Abstract</button>
+        <div class="content" id="abstract-1" hidden><h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">RxnOptBench evaluates how well large language models optimize chemical reaction conditions using real experimental data from organic methodology papers. It includes reaction screening options and literature precedents, with scores reflecting yield and stereoselectivity. Evaluations across frontier and chemistry-focused language models show substantial room for improvement in selecting the best conditions.</h6></div>
+      </td>
+      </tr>
+      </tbody></table>
+
+      <table class="paper-entry" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <tr>
+      <td style="padding:10px;width:25%;vertical-align:top">
+        <div class="one"><img src="./Publications/img/Dianshi.png" alt="DianShi-RxnDB data platform overview" loading="lazy" style="height:100%;width:160%; position: absolute;top: 10%"></div>
+      </td>
+      <td style="padding:40px;width:75%;vertical-align:middle">
+        <papertitle>DianShi-RxnDB: A Large-Scale, Fine-Grained Organic Reaction Data Platform Built via a Fully Automated Pipeline for Researchers and AI Agents</papertitle>
+        <br>
+        <strong class="author-highlight">Yubin Wang*</strong>, Xingjian Wei*, Jiang Wu*, Yinfan Wang, Boyu Zhu, et al.
+        <br>
+        <em>Technical Report</em>, 2026
+        <br>
+        <a href="https://arxiv.org/pdf/2609.06703">[PDF]</a>
+        <a href="https://dianshi.opendatalab.org.cn/">[Database]</a>
+        <br>
+        <button class="arrow" type="button" aria-expanded="false" aria-controls="abstract-2" onclick="toggleContent(this)">▶ Abstract</button>
+        <div class="content" id="abstract-2" hidden><h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">DianShi-RxnDB is a large-scale organic reaction data platform built through an automated pipeline that extracts and normalizes information from patent text, images, and reaction schemes. It covers patents from the USPTO and EPO published between 1976 and 2025, with approximately 24 million reaction instances. The platform provides a web workbench for researchers and structured retrieval tools for AI agents.</h6></div>
+      </td>
+      </tr>
+      </tbody></table>
+
+      <table class="paper-entry" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <tr>
+      <td style="padding:10px;width:25%;vertical-align:top">
+        <div class="one"><img src="./Publications/img/NMRTrans.png" alt="NMRTrans data processing workflow" loading="lazy" style="height:100%;width:160%; position: absolute;top: 10%"></div>
+      </td>
+      <td style="padding:40px;width:75%;vertical-align:middle">
+        <papertitle>NMRTrans: Structure Elucidation from Experimental NMR Spectra via Set Transformers</papertitle>
+        <br>
+        Liujia Yang*, Zhuo Yang*, Jiaqing Xie*, <strong class="author-highlight">Yubin Wang*</strong>, Ben Gao, Tianfan Fu, Xingjian Wei, Jiaxing Sun, Jiang Wu, Conghui He, Yuqiang Li, Qinying Gu
+        <br>
+        <em>The 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining, AI4Science Track</em>, <span class="venue-highlight">KDD 2026</span> (CCF-A)
+        <br>
+        <a href="https://arxiv.org/pdf/2602.10158">[PDF]</a>
+        <br>
+        <button class="arrow" type="button" aria-expanded="false" aria-controls="abstract-3" onclick="toggleContent(this)">▶ Abstract</button>
+        <div class="content" id="abstract-3" hidden><h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">NMRTrans uses Set Transformers to elucidate molecular structures from experimental nuclear magnetic resonance spectra. The work introduces NMRSpec, a large corpus of experimental proton and carbon-13 spectra, and represents each spectrum as an unordered set of peaks. On experimental benchmarks, it improves Top-10 accuracy over the strongest baseline from 43.33% to 61.15%.</h6></div>
+      </td>
+      </tr>
+      </tbody></table>
+
+      <table class="paper-entry" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
       <tr>
       <td style="padding:10px;width:25%;vertical-align:top">
         <div class="one" >
-            <img src='./Publications/img/actprompt.png' style="height:100%;width:160%; position: absolute;top: 10%">
+            <img src='./Publications/img/actprompt.png' alt='ActPrompt framework overview' loading='lazy' style="height:100%;width:160%; position: absolute;top: 10%">
         </div>
       </td>
 
@@ -369,31 +456,9 @@
           <br>
           <a href="./Publications/pdf/actprompt.pdf">[PDF]</a>
           <br>
-          <div class="arrow" style="cursor: pointer;" onclick="toggleContent(this)">▶ Abstract</div>
-          <div class="content">
-            <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">Video temporal grounding is an emerging topic aiming to
-              identify specific clips within videos. In addition to pre-trained 
-              video models, contemporary methods utilize pre-trained
-              vision-language models (VLM) to capture detailed
-              characteristics of diverse scenes and objects from video
-              frames. However, as pre-trained on images, VLM may struggle
-              to distinguish action-sensitive patterns from static objects,
-              making it necessary to adapt them to specific data
-              domains for effective feature representation over temporal
-              grounding. We address two primary challenges to achieve this
-              goal. Specifically, to mitigate high adaptation costs, we propose
-               an efficient preliminary in-domain fine-tuning paradigm
-              for feature adaptation, where downstream-adaptive features
-              are learned through several pretext tasks. Furthermore, to
-              integrate action-sensitive information into VLM, we introduce
-              Action-Cue-Injected Temporal Prompt Learning (ActPrompt), 
-              which injects action cues into the image encoder of
-              VLM for better discovering action-sensitive patterns. Extensive
-              experiments demonstrate that ActPrompt is an off-the-shelf 
-              training framework that can be effectively applied to
-              various SOTA methods, resulting in notable improvements.
-            </p>
-            </h6>
+          <button class="arrow" type="button" aria-expanded="false" aria-controls="abstract-4" onclick="toggleContent(this)">▶ Abstract</button>
+          <div class="content" id="abstract-4" hidden>
+            <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">ActPrompt improves video temporal grounding by adapting pre-trained vision-language features to video domains and injecting action cues into the image encoder. It combines efficient in-domain feature adaptation with temporal prompting to distinguish actions from static visual content. Experiments show that the framework improves multiple existing grounding methods.</h6>
 
           <div class="w3-content" style="text-align: justify">
           <p>
@@ -403,12 +468,12 @@
       </tr>
       </tbody></table>
 
-      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <table class="paper-entry" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
       <tr>
       <td style="padding:10px;width:25%;vertical-align:top">
         <div class="one" >
-            <img src='./Publications/img/ivpt.png' style="height:100%;width:160%; position: absolute;top: 10%">
+            <img src='./Publications/img/ivpt.png' alt='Interpretable Visual Prompt Tuning framework overview' loading='lazy' style="height:100%;width:160%; position: absolute;top: 10%">
         </div>
       </td>
 
@@ -417,15 +482,13 @@
           <br>
           <strong class="author-highlight">Yubin Wang</strong>, Xinyang Jiang, De Cheng, Xiangqian Zhao, Zilong Wang, Dongsheng Li, Cairong Zhao
           <br>
-          <em>The 14th International Conference on Learning Representations</em>, <span class="venue-highlight">ICLR 2026</span>
+          <em>The 14th International Conference on Learning Representations</em>, <span class="venue-highlight">ICLR 2026</span> (CCF-A)
           <br>
-          <a href="#">[PDF]</a>
+          <a href="https://proceedings.iclr.cc/paper_files/paper/2026/file/3742a873caf2c6fa8e19f8b1f60ab1a9-Paper-Conference.pdf">[PDF]</a>
           <br>
-          <div class="arrow" style="cursor: pointer;" onclick="toggleContent(this)">▶ Abstract</div>
-          <div class="content">
-            <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">Visual prompt tuning offers significant advantages for adapting pre-trained visual foundation models to specific tasks. However, current research provides limited insight into the interpretability of this approach, which is essential for enhancing AI reliability and enabling AI-driven knowledge discovery. In this paper, rather than learning abstract prompt embeddings, we propose the first framework, named Interpretable Visual Prompt Tuning (IVPT), to explore interpretability for visual prompts by introducing cross-layer concept prototypes. Specifically, visual prompts are linked to human-understandable semantic concepts, represented as a set of category-agnostic prototypes, each corresponding to a specific region of the image. IVPT then aggregates features from these regions to generate interpretable prompts for multiple network layers, allowing the explanation of visual prompts at different network depths and semantic granularities. Comprehensive qualitative and quantitative evaluations on fine-grained classification benchmarks show its superior interpretability and performance over visual prompt tuning methods and existing interpretable methods.
-            </p>
-            </h6>
+          <button class="arrow" type="button" aria-expanded="false" aria-controls="abstract-5" onclick="toggleContent(this)">▶ Abstract</button>
+          <div class="content" id="abstract-5" hidden>
+            <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">Interpretable Visual Prompt Tuning (IVPT) links visual prompts to human-understandable concept prototypes derived from image regions. It aggregates these regional features across model layers to explain prompts at different depths and semantic levels. Experiments on fine-grained classification benchmarks show strong performance and improved interpretability.</h6>
 
           <div class="w3-content" style="text-align: justify">
           <p>
@@ -435,12 +498,12 @@
       </tr>
       </tbody></table>
 
-      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <table class="paper-entry" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
       <tr>
       <td style="padding:10px;width:25%;vertical-align:top">
         <div class="one" >
-            <img src='./Publications/img/uni2det.png' style="height:100%;width:160%; position: absolute;top: 10%">
+            <img src='./Publications/img/uni2det.png' alt='Uni2Det framework overview' loading='lazy' style="height:100%;width:160%; position: absolute;top: 10%">
         </div>
       </td>
 
@@ -449,29 +512,13 @@
           <br>
           <strong class="author-highlight">Yubin Wang*</strong>, Zhikang Zou*, Xiaoqing Ye, Xiao Tan, Errui Ding, Cairong Zhao
           <br>
-          <em>The 13th International Conference on Learning Representations</em>, <span class="venue-highlight">ICLR 2025</span>
+          <em>The 13th International Conference on Learning Representations</em>, <span class="venue-highlight">ICLR 2025</span> (CCF-A)
           <br>
           <a href="./Publications/pdf/uni2det.pdf">[PDF]</a>
           <br>
-          <div class="arrow" style="cursor: pointer;" onclick="toggleContent(this)">▶ Abstract</div>
-          <div class="content">
-            <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">We present Uni<sup>2</sup>Det, a brand new framework for unified and universal multi-
-              dataset training on 3D detection, enabling robust performance across diverse
-              domains and generalization to unseen domains. Due to substantial disparities in
-              data distribution and variations in taxonomy across diverse domains, training such
-              a detector by simply merging datasets poses a significant challenge. Motivated by
-              this observation, we introduce multi-stage prompting modules for multi-dataset 3D
-              detection, which leverages prompts based on the characteristics of corresponding
-              datasets to mitigate existing differences. This elegant design facilitates seamless
-              plug-and-play integration within various advanced 3D detection frameworks in
-              a unified manner, while also allowing straightforward adaptation for universal
-              applicability across datasets. Experiments are conducted across multiple dataset
-              consolidation scenarios involving KITTI, Waymo, and nuScenes, demonstrating
-              that our Uni2Det outperforms existing methods by a large margin in multi-dataset
-              training. Furthermore, results on zero-shot cross-dataset transfer validate the
-              generalization capability of our proposed method.
-            </p>
-            </h6>
+          <button class="arrow" type="button" aria-expanded="false" aria-controls="abstract-6" onclick="toggleContent(this)">▶ Abstract</button>
+          <div class="content" id="abstract-6" hidden>
+            <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">Uni²Det unifies multi-dataset 3D object detection with prompt modules that account for differences in data distributions and object taxonomies. Its multi-stage prompts integrate with existing detectors and support training across KITTI, Waymo, and nuScenes. Experiments show improved multi-dataset detection and generalization to unseen datasets.</h6>
 
           <div class="w3-content" style="text-align: justify">
           <p>
@@ -481,12 +528,12 @@
       </tr>
       </tbody></table>
 
-      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <table class="paper-entry" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
       <tr>
       <td style="padding:10px;width:25%;vertical-align:top">
         <div class="one" >
-            <img src='./Publications/img/metaprompt.png' style="height:100%;width:160%; position: absolute;top: 10%">
+            <img src='./Publications/img/metaprompt.png' alt='MetaPrompt framework overview' loading='lazy' style="height:100%;width:160%; position: absolute;top: 10%">
         </div>
       </td>
 
@@ -500,39 +547,9 @@
           <a href="./Publications/pdf/metaprompt.pdf">[PDF]</a>
           <a href="https://github.com/Vill-Lab/2024-TIP-MetaPrompt">[Code]</a>
           <br>
-          <div class="arrow" style="cursor: pointer;" onclick="toggleContent(this)">▶ Abstract</div>
-          <div class="content">
-            <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">Prompt learning stands out as one of the most efficient approaches for adapting powerful vision-language foundational models like CLIP to downstream datasets by tuning learnable prompt vectors with very few samples. However, despite its
-              success in achieving remarkable performance on in-domain data,
-              prompt learning still faces the significant challenge of effectively
-              generalizing to novel classes and domains. Some existing methods
-              address this concern by dynamically generating distinct prompts
-              for different domains. Yet, they overlook the inherent potential of
-              prompts to generalize across unseen domains. To address these
-              limitations, our study introduces an innovative prompt learning
-              paradigm, called MetaPrompt, aiming to directly learn domain
-              invariant prompt in few-shot scenarios. To facilitate learning
-              prompts for image and text inputs independently, we present
-              a dual-modality prompt tuning network comprising two pairs
-              of coupled encoders. Our study centers on an alternate episodic
-              training algorithm to enrich the generalization capacity of the
-              learned prompts. In contrast to traditional episodic training
-              algorithms, our approach incorporates both in-domain updates
-              and domain-split updates in a batch-wise manner. For in-domain
-              updates, we introduce a novel asymmetric contrastive learning
-              paradigm, where representations from the pre-trained encoder
-              assume supervision to regularize prompts from the prompted
-              encoder. To enhance performance on out-of-domain distribution,
-              we propose a domain-split optimization on visual prompts for
-              cross-domain tasks or textual prompts for cross-class tasks
-              during domain-split updates. Extensive experiments across 11
-              datasets for base-to-new generalization and 4 datasets for domain
-              generalization exhibit favorable performance. Compared with
-              the state-of-the-art method, MetaPrompt achieves an absolute
-              gain of 1.02% on the overall harmonic mean in base-to-new
-              generalization and consistently demonstrates superiority over all
-              benchmarks in domain generalization.</p>
-            </h6>
+          <button class="arrow" type="button" aria-expanded="false" aria-controls="abstract-7" onclick="toggleContent(this)">▶ Abstract</button>
+          <div class="content" id="abstract-7" hidden>
+            <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">MetaPrompt learns domain-invariant prompts for vision-language models in few-shot settings. It combines visual and textual prompt tuning with asymmetric contrastive learning and domain-split updates to improve cross-class and cross-domain transfer. Results across base-to-new and domain-generalization benchmarks show stronger generalization than previous prompt-learning methods.</h6>
 
           <div class="w3-content" style="text-align: justify">
           <p>
@@ -542,12 +559,12 @@
       </tr>
       </tbody></table>
 
-      <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+      <table class="paper-entry" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
       <tr>
       <td style="padding:10px;width:25%;vertical-align:top">
         <div class="one" >
-            <img src='./Publications/img/hpt.png' style="height:100%;width:160%; position: absolute;top: 10%">
+            <img src='./Publications/img/hpt.png' alt='Hierarchical Prompt Tuning framework overview' loading='lazy' style="height:100%;width:160%; position: absolute;top: 10%">
         </div>
       </td>
 
@@ -561,25 +578,9 @@
           <a href="./Publications/pdf/hpt.pdf">[PDF]</a>
           <a href="https://github.com/Vill-Lab/2024-AAAI-HPT">[Code]</a>
           <br>
-          <div class="arrow" style="cursor: pointer;" onclick="toggleContent(this)">▶ Abstract</div>
-          <div class="content">
-            <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">Prompt learning has become a prevalent strategy for adapting
-              vision-language foundation models to downstream tasks. As
-              large language models (LLMs) have emerged, recent studies
-              have explored the use of category-related descriptions as input to enhance prompt effectiveness. Nevertheless, conventional descriptions fall short of structured information that
-              effectively represents the interconnections among entities or
-              attributes linked to a particular category. To address this limitation and prioritize harnessing structured knowledge, this
-              paper advocates for leveraging LLMs to build a graph for
-              each description to model the entities and attributes describing the category, as well as their correlations. Preexisting
-              prompt tuning methods exhibit inadequacies in managing
-              this structured knowledge. Consequently, we propose a novel
-              approach called Hierarchical Prompt Tuning (HPT), which
-              enables simultaneous modeling of both structured and conventional linguistic knowledge. Specifically, we introduce a
-              relationship-guided attention module to capture pair-wise associations among entities and attributes for low-level prompt
-              learning. In addition, by incorporating high-level and globallevel prompts modeling overall semantics, the proposed hierarchical structure forges cross-level interlinks and empowers the model to handle more complex and long-term relationships. Extensive experiments demonstrate that our HPT
-              shows strong effectiveness and generalizes much better than
-              existing SOTA methods.</p>
-            </h6>
+          <button class="arrow" type="button" aria-expanded="false" aria-controls="abstract-8" onclick="toggleContent(this)">▶ Abstract</button>
+          <div class="content" id="abstract-8" hidden>
+            <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">Hierarchical Prompt Tuning (HPT) uses language-model-generated graphs of category descriptions to bring structured knowledge into vision-language prompt learning. Relationship-guided attention captures links between entities and attributes, while hierarchical prompts combine local and global semantics. Experiments show improved effectiveness and generalization over previous approaches.</h6>
 
           <div class="w3-content" style="text-align: justify">
           <p>
@@ -589,108 +590,12 @@
       </tr>
       </tbody></table>
 
-<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+<table class="paper-entry" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
   <tr>
   <td style="padding:10px;width:25%;vertical-align:top">
     <div class="one" >
-        <img src='./Publications/img/pman.png' style="height:100%;width:160%; position: absolute;top: 10%">
-    </div>
-  </td>
-
-  <td style="padding:40px;width:75%;vertical-align:middle">
-      <papertitle>Part-Based Multi-Scale Attention Network for Text-Based Person Search</papertitle>
-      <br>
-      <strong class="author-highlight">Yubin Wang</strong>, Ding Qi, Cairong Zhao
-      <br>
-      <em>Chinese Conference on Pattern Recognition and Computer Vision</em>, <span class="venue-highlight">PRCV 2022</span> (CCF-C, Oral)
-      <br>
-      <a href="./Publications/pdf/pman.pdf">[PDF]</a>
-      <br>
-      <div class="arrow" style="cursor: pointer;" onclick="toggleContent(this)">▶ Abstract</div>
-      <div class="content">
-        <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">Text-based person search aims to retrieve the target person in an image gallery based on textual descriptions. Solving such a
-          fine-grained cross-modal retrieval problem is very challenging due
-          to differences between modalities. Moreover, the inter-class variance of both
-          person images and descriptions is small, and more semantic information
-          is needed to assist in aligning visual and textual representations
-          at different scales. In this paper, we propose a Part-based Multi-Scale Attention
-          Network (PMAN) capable of extracting visual semantic features from
-          different scales and matching them with textual features. We initially
-          extract visual and textual features using ResNet and BERT, respectively.
-          Multi-scale visual semantics is then acquired based on local feature maps
-          of different scales. Our proposed method learns representations for both
-          modalities simultaneously based mainly on Bottleneck Transformer with
-          self-attention mechanism. A multi-scale cross-modal matching strategy
-          is introduced to narrow the gap between modalities from multiple scales.
-          Extensive experimental results show that our method outperforms the
-          state-of-the-art methods on CUHK-PEDES datasets.</p>
-        </h6>
-
-      <div class="w3-content" style="text-align: justify">
-      <p>
-      </p>
-      </div>
-  </td>
-  </tr>
-  </tbody></table>
-
-<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-
-  <tr>
-  <td style="padding:10px;width:25%;vertical-align:top">
-    <div class="one" >
-        <img src='./Publications/img/opsum.png' style="height:100%;width:160%; position: absolute;top: 10%">
-    </div>
-  </td>
-
-  <td style="padding:40px;width:75%;vertical-align:middle">
-      <papertitle>An Opinion Summarization-Evaluation System Based on Pre-trained Models</papertitle>
-      <br>
-      Han Jiang<strong>*</strong>, <strong class="author-highlight">Yubin Wang*</strong>, Songhao Lv, Zhihua Wei
-      <br>
-      <em>Rough Sets: International Joint Conference</em>, <span class="venue-highlight">IJCRS 2021</span>
-      <br>
-      <a href="./Publications/pdf/opsum.pdf">[PDF]</a>
-      <br>
-      <div class="arrow" style="cursor: pointer;" onclick="toggleContent(this)">▶ Abstract</div>
-      <div class="content">
-        <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">As social media appeal more frequently used, the task of extracting
-          the mainstream opinions of the discussions arising from the media, i. e. opinion
-          summarization, has drawn considerable attention. This paper proposes an opinion
-          summarization-evaluation system containing a pipeline and an evaluation module
-          for the task. In our algorithm, the state-of-the-art pre-trained model BERT is
-          fine-tuned for the subjectivity analysis, and the advanced pre-trained models are
-          combined with traditional data mining algorithms to gain the mainstreams. For
-          evaluation, a set of hierarchical metrics is also stated. Experiment result shows
-          that our algorithm produces concise and major opinions. An ablation study is also
-          conducted to prove that each part of the pipeline takes effect significantly.</p>
-        </h6>
-
-      <div class="w3-content" style="text-align: justify">
-      <p>
-      </p>
-      </div>
-  </td>
-  </tr>
-  </tbody></table>
-</div>
-      
-<!-- Preprint部分 -->
-<div class="glass-container">
-<table width="100%" align="center" border="0" cellspacing="0" style="padding-top:20px;padding-left:20px;padding-bottom:5px"><tbody>
-  <tr> <td>
-          <heading>Preprint or Unpublished Papers</heading>
-          <hr />
-    </td> </tr>
-</tbody> </table>
-
-<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
-
-  <tr>
-  <td style="padding:10px;width:25%;vertical-align:top">
-    <div class="one" >
-        <img src='./Publications/img/hil.png' style="height:100%;width:160%; position: absolute;top: 10%">
+        <img src='./Publications/img/hil.png' alt='Hierarchical Identity Learning framework overview' loading='lazy' style="height:100%;width:160%; position: absolute;top: 10%">
     </div>
   </td>
 
@@ -703,11 +608,9 @@
       <br>
       <a href="./Publications/pdf/hil.pdf">[PDF]</a>
       <br>
-      <div class="arrow" style="cursor: pointer;" onclick="toggleContent(this)">▶ Abstract</div>
-      <div class="content">
-        <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">Unsupervised visible-infrared person reidentification (USVI-ReID) aims to learn modality-invariant image features from unlabeled cross-modal person datasets by reducing the modality gap while minimizing reliance on costly manual annotations. Existing methods typically address USVI-ReID using cluster-based contrastive learning, which represents a person by a single cluster center. However, they primarily focus on the commonality of images within each cluster while neglecting the finer-grained differences among them. To address the limitation, we propose a Hierarchical Identity Learning (HIL) framework. Since each cluster may contain several smaller sub-clusters that reflect fine-grained variations among images, we generate multiple memories for each existing coarse-grained cluster via a secondary clustering. Additionally, we propose Multi-Center Contrastive Learning (MCCL) to refine representations for enhancing intra-modal clustering and minimizing cross-modal discrepancies. To further improve cross-modal matching quality, we design a Bidirectional Reverse Selection Transmission (BRST) mechanism, which establishes reliable cross-modal correspondences by performing bidirectional matching of pseudo-labels. Extensive experiments conducted on the SYSU-MM01 and RegDB datasets demonstrate that the proposed method outperforms existing approaches.
-        </p>
-        </h6>
+      <button class="arrow" type="button" aria-expanded="false" aria-controls="abstract-9" onclick="toggleContent(this)">▶ Abstract</button>
+      <div class="content" id="abstract-9" hidden>
+        <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">Hierarchical Identity Learning (HIL) addresses unsupervised visible-infrared person re-identification by representing each identity cluster with multiple fine-grained centers. Multi-center contrastive learning improves representations within and across modalities, while bidirectional selection builds reliable cross-modal matches. Experiments on SYSU-MM01 and RegDB show improved retrieval performance.</h6>
 
       <div class="w3-content" style="text-align: justify">
       <p>
@@ -717,12 +620,84 @@
   </tr>
   </tbody></table>
 
-<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+<table class="paper-entry" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
 
   <tr>
   <td style="padding:10px;width:25%;vertical-align:top">
     <div class="one" >
-        <img src='./Publications/img/hpt++.png' style="height:100%;width:160%; position: absolute;top: 10%">
+        <img src='./Publications/img/pman.png' alt='Part-Based Multi-Scale Attention Network overview' loading='lazy' style="height:100%;width:160%; position: absolute;top: 10%">
+    </div>
+  </td>
+
+  <td style="padding:40px;width:75%;vertical-align:middle">
+      <papertitle>Part-Based Multi-Scale Attention Network for Text-Based Person Search</papertitle>
+      <br>
+      <strong class="author-highlight">Yubin Wang</strong>, Ding Qi, Cairong Zhao
+      <br>
+      <em>Chinese Conference on Pattern Recognition and Computer Vision</em>, <span class="venue-highlight">PRCV 2022</span> (CCF-C, Oral)
+      <br>
+      <a href="./Publications/pdf/pman.pdf">[PDF]</a>
+      <br>
+      <button class="arrow" type="button" aria-expanded="false" aria-controls="abstract-10" onclick="toggleContent(this)">▶ Abstract</button>
+      <div class="content" id="abstract-10" hidden>
+        <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">Part-Based Multi-Scale Attention Network (PMAN) retrieves people from text by combining visual features at multiple scales with textual features. It uses a Bottleneck Transformer for representation learning and a cross-modal matching strategy to align descriptions with image regions. Experiments on CUHK-PEDES show improved person-search performance.</h6>
+
+      <div class="w3-content" style="text-align: justify">
+      <p>
+      </p>
+      </div>
+  </td>
+  </tr>
+  </tbody></table>
+
+<table class="paper-entry" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+
+  <tr>
+  <td style="padding:10px;width:25%;vertical-align:top">
+    <div class="one" >
+        <img src='./Publications/img/opsum.png' alt='Opinion summarization system overview' loading='lazy' style="height:100%;width:160%; position: absolute;top: 10%">
+    </div>
+  </td>
+
+  <td style="padding:40px;width:75%;vertical-align:middle">
+      <papertitle>An Opinion Summarization-Evaluation System Based on Pre-trained Models</papertitle>
+      <br>
+      Han Jiang<strong>*</strong>, <strong class="author-highlight">Yubin Wang*</strong>, Songhao Lv, Zhihua Wei
+      <br>
+      <em>Rough Sets: International Joint Conference</em>, <span class="venue-highlight">IJCRS 2021</span>
+      <br>
+      <a href="./Publications/pdf/opsum.pdf">[PDF]</a>
+      <br>
+      <button class="arrow" type="button" aria-expanded="false" aria-controls="abstract-11" onclick="toggleContent(this)">▶ Abstract</button>
+      <div class="content" id="abstract-11" hidden>
+        <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">This system summarizes opinions in social media discussions using BERT-based subjectivity analysis and data-mining methods. It includes an evaluation module with hierarchical metrics to assess the resulting summaries. Experiments and ablation studies show that the pipeline produces concise summaries of the main opinions.</h6>
+
+      <div class="w3-content" style="text-align: justify">
+      <p>
+      </p>
+      </div>
+  </td>
+  </tr>
+  </tbody></table>
+</div>
+
+<!-- Preprint部分 -->
+<div class="glass-container preprints-container">
+<table width="100%" align="center" border="0" cellspacing="0" style="padding-top:20px;padding-left:20px;padding-bottom:5px"><tbody>
+  <tr> <td>
+          <heading>Preprint or Unpublished Papers</heading>
+          <hr />
+    </td> </tr>
+</tbody> </table>
+
+
+
+<table class="paper-entry" style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+
+  <tr>
+  <td style="padding:10px;width:25%;vertical-align:top">
+    <div class="one" >
+        <img src='./Publications/img/hpt++.png' alt='HPT++ framework overview' loading='lazy' style="height:100%;width:160%; position: absolute;top: 10%">
     </div>
   </td>
 
@@ -735,29 +710,9 @@
       <br>
       <a href="./Publications/pdf/hpt++.pdf">[PDF]</a>
       <br>
-      <div class="arrow" style="cursor: pointer;" onclick="toggleContent(this)">▶ Abstract</div>
-      <div class="content">
-        <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">Prompt learning has become a prevalent strategy for adapting vision-language foundation models
-          (VLMs) such as CLIP to downstream tasks. With the emergence of large language models (LLMs),
-          recent studies have explored the potential of using category-related descriptions to enhance prompt
-          effectiveness. However, conventional descriptions lack explicit structured information necessary to
-          represent the interconnections among key elements like entities or attributes with relation to a particular
-          category. Since existing prompt tuning methods give littie consideration to managing structured
-          knowledge, this paper advocates leveraging LLMs to construct a graph for each description to prioritize
-          such structured knowledge. Consequently, we propose a novel approach called Hierarchical
-          Prompt Tuning (HPT), enabling simultaneous modeling of both structured and conventional linguistic
-          knowledge. Specifically, we introduce a relationship-guided attention module to capture pair-wise
-          associations among entities and attributes for low-level prompt learning. In addition, by incorporating
-          high-level and global-level prompts modeling overall semantics, the proposed hierarchical structure
-          forges cross-level interlinks and empowers the model to handle more complex and long-term relationships.
-          Finally, by enhancing multi-granularity knowledge generation, redesigning the relationship-driven
-          attention re-weighting module, and incorporating consistent constraints on the hierarchical text
-          encoder, we propose HPT++, which further improves the performance of HPT. Our experiments are
-          conducted across a wide range of evaluation settings, including base-to-novel generalization, cross-dataset
-          evaluation, and domain generalization. Extensive results and ablation studies demonstrate
-          the effectiveness of our methods, which consistently outperform existing SOTA methods.
-        </p>
-        </h6>
+      <button class="arrow" type="button" aria-expanded="false" aria-controls="abstract-12" onclick="toggleContent(this)">▶ Abstract</button>
+      <div class="content" id="abstract-12" hidden>
+        <h6 style="font-family:calibri;font-weight:lighter;color:#ffffff">HPT++ extends hierarchical prompt tuning for vision-language models with multi-granularity knowledge generation and improved graph-based structure modeling. It strengthens relationship-aware attention and adds consistency constraints to the hierarchical text encoder. Experiments across base-to-novel, cross-dataset, and domain-generalization settings show consistent gains over previous methods.</h6>
 
       <div class="w3-content" style="text-align: justify">
       <p>
@@ -786,4 +741,41 @@
       </tbody></table>
 </div>
 
+<script>
+  (function() {
+    const cards = [...document.querySelectorAll('.paper-entry')];
+    if (!cards.length) return;
+
+    function equalizePaperHeights() {
+      const openAbstracts = cards
+        .map(card => card.querySelector('.content'))
+        .filter(content => content && !content.hidden);
+
+      openAbstracts.forEach(content => { content.hidden = true; });
+      cards.forEach(card => {
+        card.style.height = 'auto';
+        card.style.minHeight = '0';
+      });
+      const height = Math.ceil(Math.max(...cards.map(card => card.getBoundingClientRect().height)));
+      const mobile = window.matchMedia('(max-width: 720px)').matches;
+      cards.forEach(card => {
+        if (mobile) {
+          card.style.minHeight = `${height}px`;
+        } else {
+          card.style.height = `${height}px`;
+        }
+      });
+      openAbstracts.forEach(content => { content.hidden = false; });
+    }
+
+    let resizeFrame;
+    window.addEventListener('resize', () => {
+      cancelAnimationFrame(resizeFrame);
+      resizeFrame = requestAnimationFrame(equalizePaperHeights);
+    });
+    equalizePaperHeights();
+    if (document.fonts) document.fonts.ready.then(equalizePaperHeights);
+  })();
+</script>
+</body>
 </html>
